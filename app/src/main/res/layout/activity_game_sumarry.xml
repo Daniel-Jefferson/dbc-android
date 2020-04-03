@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue_23"
+    tools:context=".activities.GameSummaryActivity">
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_blue"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/quiz_blue_bg" />
+
+            <RelativeLayout
+                android:id="@+id/rl_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp">
+
+                <ImageView
+                    android:id="@+id/iv_cross"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/tv_results"
+                    android:layout_alignBottom="@+id/tv_results"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/cross" />
+
+                <TextView
+                    android:id="@+id/tv_results"
+                    style="@style/AppTheme.Widget.TextView.SemiBold"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/results"
+                    android:textColor="@color/yellow_68"
+                    android:textSize="@dimen/_11sdp" />
+
+                <TextView
+                    style="@style/AppTheme.Widget.TextView.Black"
+                    android:layout_below="@+id/tv_results"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_50sdp"
+                    android:text="@string/game_summary"
+                    android:textSize="@dimen/_18sdp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/rl_header"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/lyt_quiz_summary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:background="@drawable/quiz_summary"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_10sdp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_user_profile_image"
+                        android:layout_width="@dimen/_72sdp"
+                        android:layout_height="@dimen/_72sdp"
+                        android:src="@drawable/user_placeholder"
+                        app:civ_border_color="#000000"
+                        app:civ_border_width="2dp" />
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        style="@style/AppTheme.Widget.TextView.SemiBold"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@string/itsagoodthang"
+                        android:textColor="@color/blue_11"
+                        android:textSize="@dimen/_11ssp" />
+
+                    <TextView
+                        android:id="@+id/tv_result_desc"
+                        style="@style/AppTheme.Widget.TextView.SemiBold"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginBottom="@dimen/_12sdp"
+                        android:text="@string/result"
+                        android:textColor="@color/green_47"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <TextView
+                        style="@style/AppTheme.Widget.TextView.SemiBold"
+                        android:text="@string/coins_earned"
+                        android:textColor="@color/blue_11"
+                        android:textSize="@dimen/_11ssp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_coin_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-6dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="@dimen/_32sdp"
+                            android:layout_height="@dimen/_32sdp"
+                            android:src="@drawable/ic_coin_large" />
+
+                        <TextView
+                            style="@style/AppTheme.Widget.TextView.Bold"
+                            android:layout_marginStart="@dimen/_7sdp"
+                            android:layout_marginEnd="@dimen/_7sdp"
+                            android:text="x"
+                            android:textColor="@color/green_47"
+                            android:textSize="@dimen/_22sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_coins_earned"
+                            style="@style/AppTheme.Widget.TextView.Black"
+                            android:paddingBottom="@dimen/_6sdp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_32sdp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_voucher_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_dispensary"
+                        style="@style/AppTheme.Widget.TextView.SemiBold"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="@dimen/_35sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:letterSpacing=".1"
+                        android:text="@string/dispensary"
+                        android:textAllCaps="true"
+                        android:textColor="@color/yellow_68"
+                        android:textSize="@dimen/_8ssp" />
+
+                    <include
+                        android:id="@+id/dispo_card"
+                        layout="@layout/view_dispensary"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/card_height"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_15sdp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_play_again"
+                    style="@style/AppTheme.Widget.TextView.ExtraBold"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="@dimen/_2sdp"
+                    android:text="@string/play_again"
+                    android:textSize="@dimen/_14ssp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+    tools:context=".activities.SignUpActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_35sdp"
+                android:src="@drawable/logo_small" />
+
+            <TextView
+                style="@style/AppTheme.Widget.TextView.Black"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/sign_up_header"
+                android:textSize="@dimen/_18sdp" />
+
+            <include layout="@layout/lyt_signup_fields" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/_5sdp">
+
+                <TextView
+                    style="@style/AppTheme.Widget.TextView.Medium"
+                    android:text="@string/forgot_have_an_account"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    android:id="@+id/tv_login"
+                    style="@style/AppTheme.Widget.TextView.Medium"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:background="?attr/selectableItemBackground"
+                    android:text="@string/log_in"
+                    android:textColor="@color/yellow_68"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_terms"
+                style="@style/AppTheme.Widget.TextView"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_25sdp"
+                android:lineSpacingMultiplier="1.15"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:text="@string/accept_disclaimer"
+                android:textSize="@dimen/_11sdp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

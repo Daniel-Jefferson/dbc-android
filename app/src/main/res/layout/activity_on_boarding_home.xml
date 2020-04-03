@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg"
+    tools:context=".activities.OnBoardingHomeActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/logo_large"
+        android:gravity="center_horizontal"
+        android:layout_margin="@dimen/_25sdp"
+        android:layout_above="@+id/ll_bottom_view"
+        />
+    <LinearLayout
+        android:id="@+id/ll_bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_alignParentBottom="true"
+        >
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/AppTheme.Widget.Button"
+            android:text="@string/log_in"
+            />
+        <Button
+            android:id="@+id/btn_signup"
+            style="@style/AppTheme.Widget.Button.Orange.Border"
+            android:text="@string/sign_up"
+            android:layout_marginTop="@dimen/_15sdp"
+            />
+        <Button
+            style="@style/AppTheme.Widget.Button.Transparent"
+            android:text="@string/how_does_it_work"
+
+            />
+    </LinearLayout>
+</RelativeLayout>

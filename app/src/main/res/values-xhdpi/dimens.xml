@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_height">@dimen/_135sdp</dimen>
+    <dimen name="card_width">@dimen/_265sdp</dimen>
+    <dimen name="quiz_top_area_height">@dimen/_110sdp</dimen>
+    <dimen name="bank_card_bottom_margin">@dimen/_10sdp</dimen>
+</resources>

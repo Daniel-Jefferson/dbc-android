@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/grey_60"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/iv_profile"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/_27sdp"
+            android:layout_height="@dimen/_27sdp"
+            android:src="@drawable/ic_placeholder_black"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="@dimen/_50sdp"
+            />
+
+        <LinearLayout
+            android:layout_toEndOf="@+id/iv_profile"
+            android:layout_toStartOf="@+id/checkbox"
+            android:layout_marginStart="@dimen/_7sdp"
+            android:layout_marginEnd="@dimen/_9sdp"
+            android:layout_width="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/disp_name"
+                style="@style/AppTheme.Widget.TextView.SemiBold"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:text="@string/corktown"
+                android:textColor="@color/blue_11"
+                android:textSize="@dimen/_12ssp"
+                />
+
+        </LinearLayout>
+       <CheckBox
+           android:id="@+id/checkbox"
+           android:layout_width="@dimen/_31sdp"
+           android:layout_height="@dimen/_19sdp"
+           android:layout_alignParentEnd="true"
+           android:layout_centerVertical="true"
+           android:background="@drawable/all_checkbox_sselector"
+           android:button="@null"
+           android:checked="true"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/white_90"
+        android:layout_marginTop="@dimen/_11sdp"/>
+
+</LinearLayout>

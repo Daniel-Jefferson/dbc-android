@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_coin"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:src="@drawable/coin_5_yellow"/>
+        <LinearLayout
+            android:layout_toEndOf="@+id/iv_coin"
+            android:layout_toStartOf="@+id/tv_claim"
+            android:layout_marginStart="@dimen/_9sdp"
+            android:layout_marginEnd="@dimen/_9sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/disp_name"
+                style="@style/AppTheme.Widget.TextView.ExtraBold"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:text="@string/corktown"
+                android:textColor="@color/blue_11"
+                android:textSize="@dimen/_13ssp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/disp_address"
+                style="@style/AppTheme.Widget.TextView"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lineSpacingMultiplier="1.1"
+                android:maxLines="3"
+                android:text="@string/address"
+                android:textColor="@color/blue_11_70"
+                android:textSize="@dimen/_11ssp" />
+            <LinearLayout
+                android:id="@+id/ll_expiry_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/AppTheme.Widget.TextView"
+                    android:text="@string/expires"
+                    android:textColor="@color/disabled_text"
+                    android:textSize="@dimen/_11ssp"
+                    />
+                <TextView
+                    android:id="@+id/tv_expiry_date"
+                    style="@style/AppTheme.Widget.TextView"
+                    android:text="12/25/20"
+                    android:layout_marginStart="@dimen/_3sdp"
+                    android:textColor="@color/disabled_text"
+                    android:textSize="@dimen/_11ssp"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_claim"
+            style="@style/AppTheme.Widget.TextView.SemiBold"
+            android:layout_alignParentEnd="true"
+            android:text="@string/claim"
+            android:textColor="@drawable/green_txt_selecter"
+            android:textSize="@dimen/_12ssp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/disabled_tab_border"
+        android:layout_marginTop="@dimen/_8sdp"/>
+
+</LinearLayout>

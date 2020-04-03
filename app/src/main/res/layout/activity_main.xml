@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    tools:context=".activities.MainActivity">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/ll_ads_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tabLayout"
+        android:layout_marginBottom="@dimen/_5sdp">
+
+        <Button
+            android:id="@+id/view_ads"
+            style="@style/AppTheme.Widget.Button.Transparent"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:fontFamily="@font/montserrat_lightitalic"
+            android:background="@drawable/ad_area"
+            android:text="Ad Space 320x50"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_gravity="bottom"
+            android:background="@color/bottom_bar_grey" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/rl_bank"
+                style="@style/AppTheme.Widget.Tab.Container">
+
+                <ImageView
+                    style="@style/AppTheme.Widget.Tab.Icon"
+                    android:layout_above="@+id/tv_bank"
+                    android:src="@drawable/tab_bank_selecter" />
+
+                <TextView
+                    android:id="@+id/tv_bank"
+                    style="@style/AppTheme.Widget.Tab.Text"
+                    android:text="@string/bank" />
+
+                <View
+                    android:id="@+id/bank_indicator"
+                    android:visibility="invisible"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2sdp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_dispensary"
+                style="@style/AppTheme.Widget.Tab.Container">
+
+                <ImageView
+                    style="@style/AppTheme.Widget.Tab.Icon"
+                    android:layout_above="@+id/tv_dispensaries"
+                    android:src="@drawable/tab_dispo_selecter" />
+
+                <TextView
+                    android:id="@+id/tv_dispensaries"
+                    style="@style/AppTheme.Widget.Tab.Text"
+                    android:text="@string/shops" />
+
+                <View
+                    android:id="@+id/disp_indicator"
+                    android:visibility="invisible"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2sdp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_quiz"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_minus6sdp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/brain_bg"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/tab_brain_selecter" />
+
+
+                    </RelativeLayout>
+
+                    <TextView
+                        style="@style/AppTheme.Widget.TextView.SemiBold"
+                        android:text="@string/quiz"
+                        android:id="@+id/tv_quiz"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:textColor="@drawable/tab_brain_selecter"
+                        android:textSize="@dimen/_8sdp" />
+                    <View
+                        android:id="@+id/quiz_indicator"
+                        android:visibility="invisible"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_2sdp"
+                        android:background="@color/white" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_home"
+                style="@style/AppTheme.Widget.Tab.Container">
+
+                <ImageView
+                    style="@style/AppTheme.Widget.Tab.Icon"
+                    android:layout_above="@+id/tv_home"
+                    android:src="@drawable/tab_home_selecter" />
+
+                <TextView
+                    android:id="@+id/tv_home"
+                    style="@style/AppTheme.Widget.Tab.Text"
+                    android:text="@string/home" />
+                <View
+                    android:id="@+id/home_indicator"
+                    android:visibility="invisible"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2sdp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_more"
+                style="@style/AppTheme.Widget.Tab.Container">
+
+                <ImageView
+                    style="@style/AppTheme.Widget.Tab.Icon"
+                    android:layout_above="@+id/tv_more"
+                    android:src="@drawable/tab_more_selecter" />
+
+                <TextView
+                    android:id="@+id/tv_more"
+                    style="@style/AppTheme.Widget.Tab.Text"
+                    android:text="@string/more" />
+                <View
+                    android:id="@+id/more_indicator"
+                    android:visibility="invisible"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2sdp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+    </FrameLayout>
+</RelativeLayout>

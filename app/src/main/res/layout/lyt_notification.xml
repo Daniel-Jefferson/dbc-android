@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lyt_swipe_reveal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:dragEdge="right"
+    app:mode="normal">
+
+
+    <RelativeLayout
+        android:id="@+id/delete_container"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="match_parent"
+        android:background="@drawable/delete_bg_selector"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            style="@style/AppTheme.Widget.TextView"
+            android:layout_centerInParent="true"
+            android:text="@string/delete"
+            android:textSize="@dimen/_10ssp" />
+    </RelativeLayout>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ll_notification_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/notification_bg_selector"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/_20sdp"
+        android:paddingEnd="@dimen/_20sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_11sdp"
+            android:orientation="horizontal">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="@dimen/_27sdp"
+                android:layout_height="@dimen/_27sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_placeholder_black"
+                app:riv_corner_radius="@dimen/_50sdp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:gravity="start"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_disp_name"
+                    style="@style/AppTheme.Widget.TextView"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@string/corktown"
+                    android:textColor="@color/blue_70"
+                    android:textSize="@dimen/_10ssp" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/AppTheme.Widget.TextView.SemiBold"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@string/sunday_night_specials"
+                    android:textColor="@color/blue_11"
+                    android:textSize="@dimen/_12ssp" />
+
+                <TextView
+                    android:id="@+id/tv_description"
+                    style="@style/AppTheme.Widget.TextView"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="4"
+                    android:text="@string/dummy_notification"
+                    android:textColor="@color/blue_70"
+                    android:textSize="@dimen/_9ssp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_11sdp"
+            android:background="@color/white_90" />
+
+    </LinearLayout>
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

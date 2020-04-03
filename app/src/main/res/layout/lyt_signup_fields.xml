@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/lyt_signup_fields"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_phone_number"
+        style="@style/AppTheme.Widget.EditText"
+        android:inputType="phone"
+        android:imeOptions="actionNext"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:hint="@string/phone_number" />
+
+    <EditText
+        android:id="@+id/et_email"
+        style="@style/AppTheme.Widget.EditText"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:imeOptions="actionNext"
+        android:hint="@string/email" />
+
+    <EditText
+        android:id="@+id/et_username"
+        style="@style/AppTheme.Widget.EditText"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:imeOptions="actionNext"
+        android:hint="@string/username" />
+
+    <EditText
+        android:id="@+id/et_first_name"
+        style="@style/AppTheme.Widget.EditText"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:imeOptions="actionNext"
+        android:hint="@string/first_name" />
+
+    <EditText
+        android:id="@+id/et_last_name"
+        style="@style/AppTheme.Widget.EditText"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:imeOptions="actionNext"
+        android:hint="@string/last_name" />
+
+    <EditText
+        android:id="@+id/et_password"
+        style="@style/AppTheme.Widget.EditText"
+        android:inputType="textPassword"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:hint="@string/password"
+        android:imeOptions="actionNext"
+        />
+
+    <EditText
+        android:id="@+id/et_confirm_password"
+        style="@style/AppTheme.Widget.EditText"
+        android:inputType="textPassword"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:hint="@string/confirm_password" />
+
+    <Button
+        android:id="@+id/btn_signup"
+        style="@style/AppTheme.Widget.Button"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:text="@string/sign_up" />
+
+</LinearLayout>

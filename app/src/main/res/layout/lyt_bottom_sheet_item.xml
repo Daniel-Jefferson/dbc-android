@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="@dimen/_45sdp"
+    android:background="?attr/selectableItemBackground"
+    >
+
+    <ImageView
+        android:id="@+id/icon_bottom_sheet"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_centerVertical="true"
+        android:tint="@color/white"
+        android:src="@drawable/ic_camera"
+        />
+
+    <TextView
+        android:id="@+id/tvBottomSheet"
+        style="@style/AppTheme.Widget.TextView.SemiBold"
+        android:layout_height="@dimen/_35sdp"
+        android:text=""
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white"
+        android:layout_toEndOf="@+id/icon_bottom_sheet"
+        android:textSize="@dimen/_12ssp"
+        />
+
+
+</RelativeLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_60"
+    tools:context=".activities.NotificationSettingsActivity">
+    <RelativeLayout
+        android:id="@+id/rl_main_container"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+    <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6sdp">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:padding="@dimen/_5sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_back" />
+
+            <TextView
+                style="@style/AppTheme.Widget.TextView.SemiBold"
+                android:layout_centerInParent="true"
+                android:text="@string/notification_settings"
+                android:textAllCaps="true"
+                android:textColor="@color/green_47"
+                android:textSize="@dimen/_10ssp" />
+        </RelativeLayout>
+        
+        <TextView
+            style="@style/AppTheme.Widget.TextView"
+            android:text="@string/notification_disclaimer"
+            android:textColor="@color/blue_70"
+            android:textSize="@dimen/_12ssp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/ll_header"
+        android:id="@+id/rv_notification"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+</RelativeLayout>

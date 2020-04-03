@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parent_view"
+    android:background="@color/blue_11"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_light"
+        android:fillViewport="true">
+
+        <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".activities.QuizDispoActivity">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                android:background="@color/blue_11" />
+
+            <TextView
+                android:id="@+id/tv_choose_dispensary"
+                style="@style/AppTheme.Widget.TextView.SemiBold"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:text="@string/choose_shop"
+                android:textAllCaps="true"
+                android:textColor="@color/yellow_68"
+                android:textSize="@dimen/_11sdp" />
+
+            <RelativeLayout
+                android:id="@+id/rl_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_choose_dispensary">
+                <com.github.piasy.fresco.draweeview.shaped.ShapedDraweeView
+                    android:id="@+id/iv_dispensary_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:scaleType="fitXY"
+                    app:maskShape="@drawable/ic_rounded_mask"
+                    app:placeholder="@drawable/ic_placeholder_black" />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_120sdp"
+                    >
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/blue11_grad_solid_bg"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_follow"
+                    style="@style/AppTheme.Widget.TextView.SemiBold"
+                    android:layout_width="@dimen/_76sdp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:background="@drawable/follow_bg_selecter"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/follow"
+                    android:textSize="@dimen/_12ssp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_info_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_header"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_dispensary_name"
+                    style="@style/AppTheme.Widget.TextView.Black"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:text="@string/corktown"
+                    android:textColor="@color/blue_11"
+                    android:textSize="@dimen/_18ssp" />
+
+                <TextView
+                    android:id="@+id/tv_dispensary_address"
+                    style="@style/AppTheme.Widget.TextView"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:text="@string/address"
+                    android:textColor="@color/blue_11_tans70"
+                    android:textSize="@dimen/_12ssp" />
+
+                <LinearLayout
+                    android:id="@+id/ll_dispo_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_call_now"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="?attr/selectableItemBackground">
+
+                        <ImageView
+                            android:id="@+id/iv_call"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_call" />
+
+                        <TextView
+                            style="@style/TextView_Dispo_Contact"
+                            android:layout_below="@+id/iv_call"
+                            android:text="@string/call_now" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_directions"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="?attr/selectableItemBackground">
+
+                        <ImageView
+                            android:id="@+id/iv_pin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_pin" />
+
+                        <TextView
+                            style="@style/TextView_Dispo_Contact"
+                            android:layout_below="@+id/iv_pin"
+                            android:text="@string/directions" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_open_now"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="?attr/selectableItemBackground">
+
+                        <ImageView
+                            android:id="@+id/iv_timer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_timer" />
+
+                        <TextView
+                            android:id="@+id/tv_open_close"
+                            style="@style/TextView_Dispo_Contact"
+                            android:layout_below="@+id/iv_timer"
+                            android:text="@string/open_now" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/AppTheme.Widget.TextView.SemiBold"
+                    android:layout_marginTop="@dimen/_17sdp"
+                    android:layout_weight="1"
+                    android:text="@string/coins_in_bank"
+                    android:textColor="@color/blue_11"
+                    android:textSize="@dimen/_11ssp" />
+
+                <LinearLayout
+                    android:id="@+id/ll_coin_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_coin_large" />
+
+                    <TextView
+                        style="@style/AppTheme.Widget.TextView.Bold"
+                        android:layout_marginStart="@dimen/_7sdp"
+                        android:layout_marginEnd="@dimen/_7sdp"
+                        android:text="x"
+                        android:textColor="@color/yellow_68"
+                        android:textSize="@dimen/_22sdp" />
+
+                    <TextView
+                        android:id="@+id/tv_coins_earned"
+                        style="@style/AppTheme.Widget.TextView.Black"
+                        android:text="10"
+                        android:textColor="@color/blue_11"
+                        android:textSize="@dimen/_32ssp" />
+                </LinearLayout>
+
+
+                <TextView
+                    style="@style/AppTheme.Widget.TextView.SemiBold"
+                    android:layout_marginTop="@dimen/_17sdp"
+                    android:layout_weight="1"
+                    android:text="@string/coins_up_for_grab"
+                    android:textColor="@color/blue_11"
+                    android:textSize="@dimen/_11ssp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/ic_tab_brain" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginStart="@dimen/_7sdp"
+                        android:layout_marginEnd="@dimen/_7sdp"
+                        android:background="@color/grey_90" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:src="@drawable/coin_5_yellow" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_info_container"
+                android:layout_marginTop="@dimen/_17sdp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_play"
+                    style="@style/Alert_Button"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/start_quiz" />
+
+                <Button
+                    android:id="@+id/btn_piggy_bank"
+                    style="@style/AppTheme.Widget.White.Button.Border"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/go_to_piggy_bank"
+                    android:textColor="@drawable/blue_txt_selecter"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_go_back"
+                    style="@style/AppTheme.Widget.TextView.ExtraBold"
+                    android:layout_marginTop="@dimen/_17sdp"
+                    android:text="@string/go_back"
+                    android:textColor="@drawable/blue_txt_selecter"
+                    android:textSize="@dimen/_14ssp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/bank_card_bottom_margin" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

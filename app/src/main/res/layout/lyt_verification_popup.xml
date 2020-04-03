@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:paddingStart="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_5sdp"
+        android:background="@drawable/popover"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/close_btn_selecter"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-6dp"
+            android:layout_marginRight="-5dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_message"
+                style="@style/AppTheme.Widget.TextView"
+                android:lineSpacingMultiplier="1.1"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_42sdp"
+                android:layout_marginEnd="@dimen/_35sdp"
+                android:layout_marginBottom="@dimen/_18sdp"
+                android:text="@string/alert_message"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textSize="@dimen/_12sdp" />
+
+            <EditText
+                android:id="@+id/et_code"
+                style="@style/Alert_EditText"
+                android:textAllCaps="true"
+                android:inputType="number"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:hint="@string/confirm_password" />
+
+            <Button
+                android:id="@+id/btn_confirm"
+                style="@style/Alert_Button"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="@string/confirm" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

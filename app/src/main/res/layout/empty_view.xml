@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/ll_empty_view_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:visibility="gone"
+    android:paddingTop="@dimen/_10sdp"
+    android:paddingBottom="@dimen/_10sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        style="@style/AppTheme.Widget.TextView"
+        android:text="@string/no_points"
+        android:textColor="@color/blue_11_tans70"
+        android:textSize="@dimen/_13ssp"
+        />
+
+    <TextView
+        style="@style/AppTheme.Widget.TextView"
+        android:text="@string/go_play"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:textColor="@color/blue_11_tans70"
+        android:textSize="@dimen/_13ssp" />
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_marginTop="@dimen/_20sdp"
+        style="@style/Alert_Button"
+        android:text="@string/start_quiz" />
+
+</LinearLayout>

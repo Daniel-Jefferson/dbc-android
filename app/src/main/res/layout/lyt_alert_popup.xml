@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:paddingStart="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_5sdp"
+        android:background="@drawable/popover"
+        android:layout_height="@dimen/_200sdp">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/close_btn_selecter"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-6dp"
+            android:layout_marginRight="-5dp"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_message"
+                style="@style/AppTheme.Widget.TextView"
+                android:lineSpacingMultiplier="1.1"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_42sdp"
+                android:layout_marginEnd="@dimen/_35sdp"
+                android:layout_marginBottom="@dimen/_18sdp"
+                android:text="@string/cancel_quiz_alert"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textSize="@dimen/_12sdp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    style="@style/Alert_Button"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:text="@string/capital_cancel" />
+                <Button
+                    android:id="@+id/btn_confirm"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    style="@style/Alert_Button"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:text="@string/yes" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
