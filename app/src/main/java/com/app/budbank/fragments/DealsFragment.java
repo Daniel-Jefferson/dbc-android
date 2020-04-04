@@ -1,26 +1,30 @@
-package com.app.budbank.activities;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.app.budbank.fragments;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.app.budbank.R;
 import com.app.budbank.adapters.ViewPagerAdapter;
-import com.app.budbank.fragments.AllDealsFragment;
-import com.app.budbank.fragments.FollowingDealsFragment;
 import com.app.budbank.utils.BudsBankUtils;
 import com.app.budbank.utils.CustomViewpager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DealsActivity extends BaseActivity {
-    @BindView(R.id.iv_back)
-    ImageView ivBack;
+public class DealsFragment extends BaseFragment {
+
+
+    public DealsFragment() {
+    }
+
+
     @BindView(R.id.tv_tab_following)
     TextView tvTabFollowing;
     @BindView(R.id.tv_tab_all)
@@ -33,18 +37,22 @@ public class DealsActivity extends BaseActivity {
     private ViewPagerAdapter viewPagerAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deals);
-        mContext=this;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_deals, container, false);
+    }
 
-        ButterKnife.bind(this);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+        ButterKnife.bind(this, view);
         initViews();
     }
 
     private void initViews() {
         BudsBankUtils.setViewUnderStatusBar(lytMainContainer, mContext);
-        ivBack.setOnClickListener(this);
         tvTabFollowing.setSelected(true);
         tvTabFollowing.setOnClickListener(this);
         tvTabAll.setOnClickListener(this);
@@ -52,7 +60,7 @@ public class DealsActivity extends BaseActivity {
     }
 
     private void initPagerAdapter() {
-        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
         viewPagerAdapter.addFragment(new FollowingDealsFragment());
         viewPagerAdapter.addFragment(new AllDealsFragment());
         viewPager.setPagingEnabled(false);
@@ -83,9 +91,6 @@ public class DealsActivity extends BaseActivity {
                 break;
             case R.id.tv_tab_all:
                 setSelectedTab(1);
-                break;
-            case R.id.iv_back:
-                finish();
                 break;
         }
     }

@@ -1,5 +1,4 @@
-package com.app.budbank.fragments;
-
+package com.app.budbank.activities;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,24 +6,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.app.budbank.R;
-import com.app.budbank.activities.BaseActivity;
-import com.app.budbank.activities.LoginActivity;
-import com.app.budbank.activities.NotificationSettingsActivity;
-import com.app.budbank.activities.ProfileActivity;
 import com.app.budbank.models.UserModel;
 import com.app.budbank.utils.AppConstants;
 import com.app.budbank.utils.BudsBankUtils;
@@ -35,10 +24,12 @@ import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import okhttp3.internal.connection.RealConnection;
 
-public class SettingsFragment extends BaseFragment {
+public class SettingsActivity  extends BaseActivity implements View.OnClickListener {
 
+
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
     @BindView(R.id.iv_user_profile)
     ImageView ivProfile;
     @BindView(R.id.tv_username)
@@ -47,8 +38,8 @@ public class SettingsFragment extends BaseFragment {
     RelativeLayout lytMainContainer;
     @BindView(R.id.rl_profile)
     RelativeLayout lytProfile;
-    @BindView(R.id.rl_notification)
-    RelativeLayout lytNotification;
+//    @BindView(R.id.rl_notification)
+//    RelativeLayout lytNotification;
     @BindView(R.id.rl_terms)
     RelativeLayout lytTerms;
     @BindView(R.id.rl_privacy)
@@ -58,23 +49,18 @@ public class SettingsFragment extends BaseFragment {
     @BindView(R.id.tv_logout)
     TextView tvLogout;
 
-    private LocalBroadcast localBroadcast;
-
-    public SettingsFragment() {
-    }
+    private SettingsActivity.LocalBroadcast localBroadcast;
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_settings, container, false);
-    }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
+        // apply bindings
+        ButterKnife.bind(this);
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
-
+        // set context
+        mContext = this;
 
         initViews();
         registerReceiver();
@@ -98,8 +84,9 @@ public class SettingsFragment extends BaseFragment {
     private void initViews() {
         BudsBankUtils.setViewUnderStatusBar(lytMainContainer,mContext);
         updateView();
+        ivBack.setOnClickListener(this);
         lytProfile.setOnClickListener(this);
-        lytNotification.setOnClickListener(this);
+//        lytNotification.setOnClickListener(this);
         lytTerms.setOnClickListener(this);
         lytPrivacy.setOnClickListener(this);
         lytFeedback.setOnClickListener(this);
@@ -126,9 +113,9 @@ public class SettingsFragment extends BaseFragment {
             case R.id.rl_profile:
                 goToProfile();
                 break;
-            case R.id.rl_notification:
-                goToNotifcationSettings();
-                break;
+            //case R.id.rl_notification:
+            //    goToNotifcationSettings();
+            //    break;
             case R.id.rl_feedback:
                 String email = "support@budsbank.com";
                 Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"+email));
@@ -137,6 +124,9 @@ public class SettingsFragment extends BaseFragment {
             case R.id.iv_user_profile:
                 String profileUrl = StorageUtillity.getDataFromPreferences(mContext, AppConstants.SharedPreferencesKeys.PROFILE_IMAGE.getValue(), "");
                 DialogUtils.showPhotoDialog(mContext,profileUrl );
+            case R.id.iv_back:
+                finish();
+                break;
         }
     }
 
@@ -147,7 +137,7 @@ public class SettingsFragment extends BaseFragment {
     }
 
     private void registerReceiver() {
-        localBroadcast = new SettingsFragment.LocalBroadcast();
+        localBroadcast = new SettingsActivity.LocalBroadcast();
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(AppConstants.Actions.UPDATE_PROFILE.getValue());
         LocalBroadcastManager.getInstance(mContext).registerReceiver(localBroadcast, intentFilter);

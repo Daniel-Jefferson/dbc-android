@@ -12,21 +12,19 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.app.budbank.R;
 import com.app.budbank.adapters.ViewPagerAdapter;
 import com.app.budbank.fragments.BankFragment;
+import com.app.budbank.fragments.DealsFragment;
 import com.app.budbank.fragments.HomeFragment;
 import com.app.budbank.fragments.DispensaryFragment;
 import com.app.budbank.fragments.QuizIntroFragment;
 import com.app.budbank.interfaces.Communicator;
 import com.app.budbank.models.DispensaryModel;
-import com.app.budbank.models.LoginModel;
 import com.app.budbank.models.LoginResponseModel;
 import com.app.budbank.utils.AppConstants;
 import com.app.budbank.utils.BudsBankUtils;
@@ -34,10 +32,9 @@ import com.app.budbank.utils.DialogUtils;
 import com.app.budbank.utils.StorageUtillity;
 import com.app.budbank.utils.cacheUtils.MainStorageUtils;
 import com.app.budbank.web.APIController;
-import com.facebook.drawee.backends.pipeline.Fresco;
 
 import java.util.ArrayList;
-import com.app.budbank.fragments.SettingsFragment;
+
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -60,7 +57,7 @@ public class MainActivity extends BaseActivity implements Communicator {
     RelativeLayout lytQuiz;
     @BindView(R.id.rl_home)
     RelativeLayout lytHome;
-    @BindView(R.id.rl_more)
+    @BindView(R.id.rl_deals)
     RelativeLayout lytMore;
     @BindView(R.id.ll_ads_view)
     LinearLayout ll_ads_view;
@@ -82,7 +79,7 @@ public class MainActivity extends BaseActivity implements Communicator {
     TextView tvQuiz;
     @BindView(R.id.tv_home)
     TextView tvHome;
-    @BindView(R.id.tv_more)
+    @BindView(R.id.tv_deals)
     TextView tvMore;
     @BindView(R.id.view_ads)
     View viewAds;
@@ -234,7 +231,7 @@ public class MainActivity extends BaseActivity implements Communicator {
         viewPagerAdapter.addFragment(new DispensaryFragment());
         viewPagerAdapter.addFragment(new QuizIntroFragment());
         viewPagerAdapter.addFragment(new HomeFragment());
-        viewPagerAdapter.addFragment(new SettingsFragment());
+        viewPagerAdapter.addFragment(new DealsFragment());
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setOffscreenPageLimit(4);
         viewPager.setCurrentItem(3);
@@ -291,7 +288,7 @@ public class MainActivity extends BaseActivity implements Communicator {
                 viewPager.setCurrentItem(3);
                 unSelectOtherViews(lytHome,tvHome, homeIndicator);
                 break;
-            case R.id.rl_more:
+            case R.id.rl_deals:
                 viewPager.setCurrentItem(4);
                 unSelectOtherViews(lytMore,tvMore, moreIndicator);
                 break;
@@ -332,7 +329,7 @@ public class MainActivity extends BaseActivity implements Communicator {
         selectedTextView = textView;
         selectedTab = indicator;
         indicator.setVisibility(View.VISIBLE);
-        if(view.getId()== R.id.rl_more) {
+        if(view.getId()== R.id.rl_deals) {
             viewAds.setVisibility(View.GONE);
         } else if(viewAds.getVisibility()!= View.VISIBLE){
             viewAds.setVisibility(View.VISIBLE);

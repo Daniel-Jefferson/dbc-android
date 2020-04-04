@@ -1,11 +1,9 @@
 package com.app.budbank.fragments;
 
-import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,7 +13,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,23 +21,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.budbank.R;
-import com.app.budbank.activities.DealsActivity;
 import com.app.budbank.activities.ProfileActivity;
-import com.app.budbank.adapters.DispensaryAdapter;
+import com.app.budbank.activities.SettingsActivity;
 import com.app.budbank.adapters.VoucherAdapter;
-import com.app.budbank.models.DispensaryModel;
 import com.app.budbank.models.GetNotificationResponseModel;
-import com.app.budbank.models.MarkReadModel;
 import com.app.budbank.models.NotificationModel;
 import com.app.budbank.models.Notifications;
-import com.app.budbank.models.ResponseModel;
 import com.app.budbank.models.UserModel;
 import com.app.budbank.models.VoucherModel;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+
 import android.widget.RelativeLayout;
 
-import com.app.budbank.R;
 import com.app.budbank.activities.InboxActivity;
 import com.app.budbank.utils.AppConstants;
 import com.app.budbank.utils.BudsBankUtils;
@@ -249,7 +240,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void goToDeals() {
-        startActivity(new Intent(mContext, DealsActivity.class));
+        startActivity(new Intent(mContext, SettingsActivity.class));
     }
 
     @Override

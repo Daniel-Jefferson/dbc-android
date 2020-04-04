@@ -171,18 +171,18 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/rl_more"
+                android:id="@+id/rl_deals"
                 style="@style/AppTheme.Widget.Tab.Container">
 
                 <ImageView
                     style="@style/AppTheme.Widget.Tab.Icon"
-                    android:layout_above="@+id/tv_more"
-                    android:src="@drawable/tab_more_selecter" />
+                    android:layout_above="@+id/tv_deals"
+                    android:src="@drawable/ic_inbox" />
 
                 <TextView
-                    android:id="@+id/tv_more"
+                    android:id="@+id/tv_deals"
                     style="@style/AppTheme.Widget.Tab.Text"
-                    android:text="@string/more" />
+                    android:text="@string/deals" />
                 <View
                     android:id="@+id/more_indicator"
                     android:visibility="invisible"

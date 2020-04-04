@@ -71,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_9sdp"
-                    android:src="@drawable/ic_inbox" />
+                    android:src="@drawable/ic_tab_more" />
 
                 <RelativeLayout
                     android:id="@+id/rl_notification_count_container"

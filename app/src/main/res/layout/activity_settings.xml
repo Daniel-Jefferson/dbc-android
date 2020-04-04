@@ -15,7 +15,7 @@
     android:id="@+id/rl_main_container"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white_90"
-    tools:context=".fragments.SettingsFragment">
+    tools:context=".activities.SettingsActivity">
 
 
     <ScrollView
@@ -43,12 +43,29 @@
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp">
+
+                        <ImageView
+                            android:id="@+id/iv_back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:src="@drawable/cross" />
+
                     <TextView
                         style="@style/AppTheme.Widget.TextView.SemiBold"
                         android:text="@string/settings"
                         android:textAllCaps="true"
                         android:textColor="@color/yellow_68"
-                        android:textSize="@dimen/_10sdp" />
+                        android:textSize="@dimen/_10sdp"
+                        android:layout_centerInParent="true" />
+
+                    </RelativeLayout>
 
                     <com.makeramen.roundedimageview.RoundedImageView
                         android:id="@+id/iv_user_profile"
@@ -111,33 +128,33 @@
 
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:id="@+id/rl_notification"
-                    style="@style/settings_option_container">
+<!--                <RelativeLayout-->
+<!--                    android:id="@+id/rl_notification"-->
+<!--                    style="@style/settings_option_container">-->
 
-                    <TextView
-                        android:id="@+id/tv_notification_settings"
-                        style="@style/AppTheme.Widget.TextView.SemiBold"
-                        android:layout_centerVertical="true"
-                        android:text="@string/notification_settings"
-                        android:textSize="@dimen/_13ssp"
-                        android:textColor="@color/blue_11" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_notification_settings"-->
+<!--                        style="@style/AppTheme.Widget.TextView.SemiBold"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:text="@string/notification_settings"-->
+<!--                        android:textSize="@dimen/_13ssp"-->
+<!--                        android:textColor="@color/blue_11" />-->
 
-                    <ImageView
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_10sdp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_next" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="@dimen/_10sdp"-->
+<!--                        android:layout_height="@dimen/_10sdp"-->
+<!--                        android:layout_alignParentEnd="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:src="@drawable/ic_next" />-->
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_1sdp"
-                        android:layout_below="@id/tv_notification_settings"
-                        android:layout_marginTop="@dimen/_14sdp"
-                        android:background="@color/disabled_tab_border" />
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="@dimen/_1sdp"-->
+<!--                        android:layout_below="@id/tv_notification_settings"-->
+<!--                        android:layout_marginTop="@dimen/_14sdp"-->
+<!--                        android:background="@color/disabled_tab_border" />-->
 
-                </RelativeLayout>
+<!--                </RelativeLayout>-->
 
                 <RelativeLayout
                     android:id="@+id/rl_terms"
