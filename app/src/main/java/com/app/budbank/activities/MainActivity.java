@@ -13,6 +13,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,6 +62,8 @@ public class MainActivity extends BaseActivity implements Communicator {
     RelativeLayout lytHome;
     @BindView(R.id.rl_more)
     RelativeLayout lytMore;
+    @BindView(R.id.ll_ads_view)
+    LinearLayout ll_ads_view;
     @BindView(R.id.bank_indicator)
     View bankIndicator;
     @BindView(R.id.disp_indicator)
@@ -105,6 +108,7 @@ public class MainActivity extends BaseActivity implements Communicator {
     private void initViews() {
         fetchFCMToken();
         DEVICE_ID = BudsBankUtils.getDeviceId(mContext);
+        ll_ads_view.setVisibility(View.INVISIBLE);
         setClickListeneres();
         MainStorageUtils mainStorageUtils = MainStorageUtils.getInstance();
         ArrayList<DispensaryModel> list = mainStorageUtils.getDispensariesList();
