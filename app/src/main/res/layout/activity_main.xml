@@ -177,7 +177,7 @@
                 <ImageView
                     style="@style/AppTheme.Widget.Tab.Icon"
                     android:layout_above="@+id/tv_deals"
-                    android:src="@drawable/ic_inbox" />
+                    android:src="@drawable/ic_deals" />
 
                 <TextView
                     android:id="@+id/tv_deals"
