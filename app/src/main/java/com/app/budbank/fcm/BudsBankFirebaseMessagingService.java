@@ -25,7 +25,7 @@ public class BudsBankFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage message) {
-        sendMyNotification(message.getNotification().getBody());
+        sendMyNotification(message.getNotification().getTitle(), message.getNotification().getBody());
     }
 
     @Override
@@ -39,7 +39,7 @@ public class BudsBankFirebaseMessagingService extends FirebaseMessagingService {
     }
 
 
-    private void sendMyNotification(String message) {
+    private void sendMyNotification(String title, String message) {
 
         //On click of notification it redirect to this Activity
         Intent intent = new Intent(this, MainActivity.class);
@@ -49,7 +49,7 @@ public class BudsBankFirebaseMessagingService extends FirebaseMessagingService {
         Uri soundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("My Firebase Push notification")
+                .setContentTitle(title)
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setSound(soundUri)

@@ -5,6 +5,7 @@ import com.app.budbank.models.ClaimVoucherResponseModel;
 import com.app.budbank.models.CompletedDispensariesModel;
 import com.app.budbank.models.DeleteNotificationModel;
 import com.app.budbank.models.DispensaryResponseModel;
+import com.app.budbank.models.FCMTokenModel;
 import com.app.budbank.models.ForgetPasswordModel;
 import com.app.budbank.models.GetNotificationResponseModel;
 import com.app.budbank.models.LoginModel;
@@ -376,6 +377,17 @@ public class APIController {
         );
 
         updateRequestStatus.enqueue(callback);
+    }
+
+    public static void updateFCMToken(String sessionToken, FCMTokenModel model, Callback<ResponseModel> callback) {
+        if (apiInstance == null)
+            apiInstance = getApiInstance();
+        Call<ResponseModel> fcmUpdateStatus = apiInstance.updateFCMToken(
+                sessionToken,
+                model
+        );
+
+        fcmUpdateStatus.enqueue(callback);
     }
 
 
