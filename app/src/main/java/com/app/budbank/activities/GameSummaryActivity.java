@@ -44,6 +44,7 @@ public class GameSummaryActivity extends BaseActivity {
     TextView tvDispensaryAddress;
     private VoucherModel voucherModel;
     private int questionAnswered;
+    private int remainCount;
     private DispensaryModel dispensaryModel;
 
     @Override
@@ -63,6 +64,7 @@ public class GameSummaryActivity extends BaseActivity {
             voucherModel = (VoucherModel) bundle.getSerializable(AppConstants.IntentKeys.VOUCHER_MODEL.getValue());
             dispensaryModel = (DispensaryModel) bundle.get(AppConstants.IntentKeys.DISPENSARY_MODEL.getValue());
             questionAnswered = bundle.getInt(AppConstants.IntentKeys.CORRECT_ANSWERS_COUNT.getValue(), 0);
+            remainCount = bundle.getInt(AppConstants.IntentKeys.USER_DISABLED_DISPENSARIES.getValue(), 0);
         }
         tvRedeem.setText(R.string.learn_more);
         tvPlayAgain.setOnClickListener(this);
@@ -101,7 +103,10 @@ public class GameSummaryActivity extends BaseActivity {
         MainStorageUtils mainStorageUtils = MainStorageUtils.getInstance();
         if (voucherModel != null)
             mainStorageUtils.addCompletedVoucher(voucherModel);
-        mainStorageUtils.addCompletedDispensary(dispensaryModel);
+
+        if (remainCount == 0) {
+            mainStorageUtils.addCompletedDispensary(dispensaryModel);
+        }
         BudsBankUtils.broadcastAction(this, AppConstants.Actions.AVAILABLE_VOUCHER.getValue());
         BudsBankUtils.broadcastAction(this, AppConstants.Actions.COMPLETED_DISPENSARY.getValue());
     }

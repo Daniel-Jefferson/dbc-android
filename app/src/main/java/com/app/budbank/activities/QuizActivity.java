@@ -323,7 +323,9 @@ public class QuizActivity extends BaseActivity {
                     isActivityRunning = false;
                     if(quitQuiz) {
                         MainStorageUtils mainStorageUtils = MainStorageUtils.getInstance();
-                        mainStorageUtils.addCompletedDispensary(dispensaryModel);
+                        if (response.body().getRemainCount() == 0) {
+                            mainStorageUtils.addCompletedDispensary(dispensaryModel);
+                        }
                         BudsBankUtils.broadcastAction(mContext, AppConstants.Actions.COMPLETED_DISPENSARY.getValue());
                         finish();
                     } else {
@@ -331,6 +333,7 @@ public class QuizActivity extends BaseActivity {
                         intent.putExtra(AppConstants.IntentKeys.DISPENSARY_MODEL.getValue(), dispensaryModel);
                         intent.putExtra(AppConstants.IntentKeys.VOUCHER_MODEL.getValue(), saveQuiz.getVoucher());
                         intent.putExtra(AppConstants.IntentKeys.CORRECT_ANSWERS_COUNT.getValue(), currentQuestion);
+                        intent.putExtra(AppConstants.IntentKeys.USER_DISABLED_DISPENSARIES.getValue(), response.body().getRemainCount());
                         startActivity(intent);
                         finish();
                     }
