@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -78,12 +80,13 @@ public class LoginActivity extends BaseActivity {
 
     private void initViews() {
         isEmailVerified =false;
-        String terms = mContext.getString(R.string.terms_of_use);
-        String privacy = mContext.getString(R.string.privacy_policy);
+        String terms = String.format("<a href=http://budsbank.com/terms-of-use><b>%s</b></a>", mContext.getString(R.string.terms_of_use));
+        String privacy = String.format("<a href=http://budsbank.com/privacy-policy><b>%s</b></a>", mContext.getString(R.string.privacy_policy));
         String termsOfUse = getString(R.string.accept_disclaimer);
-        SpannableStringBuilder formatedString = BudsBankUtils.formatSpannableString(mContext, termsOfUse, terms, privacy);
+        String formatedString = String.format(termsOfUse, terms, privacy);
         requestLocationPermission( callable);
-        tvTerms.setText(formatedString, TextView.BufferType.SPANNABLE);
+        tvTerms.setText(Html.fromHtml(formatedString), TextView.BufferType.SPANNABLE);
+        tvTerms.setMovementMethod(LinkMovementMethod.getInstance());
         btnLogin.setOnClickListener(this);
         tvSignup.setOnClickListener(this);
         tvSpace.setOnClickListener(this);

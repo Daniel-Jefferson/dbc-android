@@ -1,37 +1,23 @@
 package com.app.budbank.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
-import android.Manifest;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.app.budbank.R;
 import com.app.budbank.interfaces.AlertDialogListener;
-import com.app.budbank.models.DispensaryModel;
-import com.app.budbank.models.LoginModel;
 import com.app.budbank.models.LoginResponseModel;
 import com.app.budbank.models.SignupModel;
 import com.app.budbank.models.SignupResponseModel;
-import com.app.budbank.models.UserModel;
 import com.app.budbank.models.VerifyCodeModel;
 import com.app.budbank.utils.AppConstants;
 import com.app.budbank.utils.BudsBankUtils;
@@ -39,24 +25,15 @@ import com.app.budbank.utils.DialogUtils;
 import com.app.budbank.utils.StorageUtillity;
 import com.app.budbank.utils.cacheUtils.MainStorageUtils;
 import com.app.budbank.web.APIController;
-import com.app.budbank.web.WebConfig;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
-import com.mukesh.countrypicker.Country;
-import com.mukesh.countrypicker.CountryPicker;
-import com.mukesh.countrypicker.CountryPickerListener;
 import com.redmadrobot.inputmask.MaskedTextChangedListener;
 import com.redmadrobot.inputmask.helper.AffinityCalculationStrategy;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import androidx.annotation.NonNull;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -105,13 +82,15 @@ public class SignUpActivity extends BaseActivity {
     }
 
     private void initViews() {
-        String terms = mContext.getString(R.string.terms_of_use);
-        String privacy = mContext.getString(R.string.privacy_policy);
+        String terms = String.format("<a href=http://budsbank.com/terms-of-use><b>%s</b></a>", mContext.getString(R.string.terms_of_use));
+        String privacy = String.format("<a href=http://budsbank.com/privacy-policy><b>%s</b></a>", mContext.getString(R.string.privacy_policy));
         String termsOfUse = getString(R.string.accept_disclaimer);
-        SpannableStringBuilder formatedString = BudsBankUtils.formatSpannableString(mContext, termsOfUse, terms, privacy);
+        String formatedString = String.format(termsOfUse, terms, privacy);
         requestLocationPermission( callable);
         setTextWatcher();
-        tvTerms.setText(formatedString, TextView.BufferType.SPANNABLE);
+        tvTerms.setText(Html.fromHtml(formatedString), TextView.BufferType.SPANNABLE);
+        tvTerms.setMovementMethod(LinkMovementMethod.getInstance());
+
         tvLogin.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
     }

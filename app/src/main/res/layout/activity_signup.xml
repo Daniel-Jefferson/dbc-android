@@ -65,7 +65,7 @@
                 android:layout_marginEnd="@dimen/_25sdp"
                 android:lineSpacingMultiplier="1.15"
                 android:layout_marginBottom="@dimen/_20sdp"
-                android:text="@string/accept_disclaimer"
+                android:textColorLink="@color/white"
                 android:textSize="@dimen/_11sdp" />
 
         </LinearLayout>
