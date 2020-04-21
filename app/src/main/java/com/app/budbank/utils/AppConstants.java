@@ -128,7 +128,8 @@ public class AppConstants {
         CORRECT_ANSWERS_COUNT("correct_answers_count"),
         EVENT_RESPONSE("event-response"),
         NOTIFICATION_MODEL("notification_model"),
-        FRAGMENT_TO_OPEN("fragment_to_open");
+        FRAGMENT_TO_OPEN("fragment_to_open"),
+        USER_DISABLED_DISPENSARIES("user_disabled_dispensaries");
 
         String mValue;
 
