@@ -5,6 +5,7 @@ import com.app.budbank.models.ClaimVoucherResponseModel;
 import com.app.budbank.models.CompletedDispensariesModel;
 import com.app.budbank.models.DeleteNotificationModel;
 import com.app.budbank.models.DispensaryResponseModel;
+import com.app.budbank.models.FCMTokenModel;
 import com.app.budbank.models.ForgetPasswordModel;
 import com.app.budbank.models.GetNotificationResponseModel;
 import com.app.budbank.models.LoginModel;
@@ -176,6 +177,10 @@ public interface BudsBankAPI {
     @POST("api/v1/notification/delete")
     Call<ResponseModel> deleteNotification(@Header("x-access-token") String sessionToken,
                                          @Body DeleteNotificationModel deleteNotificationModel);
+
+    @POST("api/v1/fcm/update-token")
+    Call<ResponseModel> updateFCMToken(@Header("x-access-token") String sessionToken,
+                                       @Body FCMTokenModel fcmTokenModel);
 
 
 }

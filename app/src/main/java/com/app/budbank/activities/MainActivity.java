@@ -25,7 +25,9 @@ import com.app.budbank.fragments.DispensaryFragment;
 import com.app.budbank.fragments.QuizIntroFragment;
 import com.app.budbank.interfaces.Communicator;
 import com.app.budbank.models.DispensaryModel;
+import com.app.budbank.models.FCMTokenModel;
 import com.app.budbank.models.LoginResponseModel;
+import com.app.budbank.models.ResponseModel;
 import com.app.budbank.utils.AppConstants;
 import com.app.budbank.utils.BudsBankUtils;
 import com.app.budbank.utils.DialogUtils;
@@ -134,6 +136,24 @@ public class MainActivity extends BaseActivity implements Communicator {
                         // Log and toast
                         String msg = token;
                         Log.d("msg", msg);
+
+                        String sessionToken = StorageUtillity.getDataFromPreferences(mContext, AppConstants.SharedPreferencesKeys.SESSION_TOKEN.getValue(), "");
+                        String userId       = StorageUtillity.getDataFromPreferences(mContext, AppConstants.SharedPreferencesKeys.USER_ID.getValue(), "");
+                        FCMTokenModel fcmTokenModel = new FCMTokenModel();
+                        fcmTokenModel.setDeviceId(4);
+                        fcmTokenModel.setToken(token);
+                        fcmTokenModel.setUserId(userId);
+                        APIController.updateFCMToken(sessionToken, fcmTokenModel , new Callback<ResponseModel>() {
+                            @Override
+                            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                                Log.d("update FCM Token", "success");
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                                Log.d("update FCM Token", "fail");
+                            }
+                        });
 
                     }
                 });
