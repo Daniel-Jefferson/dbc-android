@@ -6,9 +6,11 @@ import androidx.core.content.res.ResourcesCompat;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.method.LinkMovementMethod;
 import android.text.style.StyleSpan;
 import android.text.style.TypefaceSpan;
 import android.text.style.UnderlineSpan;
@@ -44,11 +46,12 @@ public class AgeGateActivity extends BaseActivity {
     }
 
     private void initViews() {
-        String terms = mContext.getString(R.string.terms_of_use);
-        String privacy = mContext.getString(R.string.privacy_policy);
+        String terms = String.format("<a href=http://budsbank.com/terms-of-use><b>%s</b></a>", mContext.getString(R.string.terms_of_use));
+        String privacy = String.format("<a href=http://budsbank.com/privacy-policy><b>%s</b></a>", mContext.getString(R.string.privacy_policy));
         String termsOfUse = getString(R.string.age_confirmation);
-        SpannableStringBuilder formatedString = BudsBankUtils.formatSpannableString(mContext, termsOfUse, terms, privacy);
-        tvTerms.setText(formatedString, TextView.BufferType.SPANNABLE);
+        String formatedString = String.format(termsOfUse, terms, privacy);
+        tvTerms.setText(Html.fromHtml(formatedString), TextView.BufferType.SPANNABLE);
+        tvTerms.setMovementMethod(LinkMovementMethod.getInstance());
 
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override

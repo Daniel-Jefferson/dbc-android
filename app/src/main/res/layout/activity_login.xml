@@ -95,6 +95,7 @@
                 android:lineSpacingMultiplier="1.15"
                 android:layout_marginStart="@dimen/_25sdp"
                 android:layout_marginEnd="@dimen/_25sdp"
+                android:textColorLink="@color/white"
                 />
         </LinearLayout>
     </ScrollView>
