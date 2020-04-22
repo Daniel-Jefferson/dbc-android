@@ -116,6 +116,17 @@ public class SettingsActivity  extends BaseActivity implements View.OnClickListe
             //case R.id.rl_notification:
             //    goToNotifcationSettings();
             //    break;
+
+            case R.id.rl_terms:
+                Uri termsUri = Uri.parse("http://budsbank.com/terms-of-use");
+                Intent termsIntent = new Intent(Intent.ACTION_VIEW, termsUri);
+                startActivity(termsIntent);
+                break;
+            case R.id.rl_privacy:
+                Uri privacyUri = Uri.parse("http://budsbank.com/privacy-policy");
+                Intent privacyIntent = new Intent(Intent.ACTION_VIEW, privacyUri);
+                startActivity(privacyIntent);
+                break;
             case R.id.rl_feedback:
                 String email = "support@budsbank.com";
                 Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"+email));
