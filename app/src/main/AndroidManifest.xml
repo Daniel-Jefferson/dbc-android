@@ -31,64 +31,64 @@
         </provider>
 
         <activity
-            android:name="com.app.budsbank.activities.InboxActivity"
+            android:name=".activities.InboxActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name="com.app.budsbank.activities.SettingsActivity"
+            android:name=".activities.SettingsActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.app.budsbank.activities.NotificationSettingsActivity"
+            android:name=".activities.NotificationSettingsActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.app.budsbank.activities.ForgotPasswordActivity"
+            android:name=".activities.ForgotPasswordActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.app.budsbank.activities.GameSummaryActivity"
+            android:name=".activities.GameSummaryActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.app.budsbank.activities.QuizActivity"
+            android:name=".activities.QuizActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.app.budsbank.activities.SearchActivity"
+            android:name=".activities.SearchActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible" />
         <activity
-            android:name="com.app.budsbank.activities.QuizDispoActivity"
+            android:name=".activities.QuizDispoActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.app.budsbank.activities.ProfileActivity"
+            android:name=".activities.ProfileActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name="com.app.budsbank.activities.SignUpActivity"
+            android:name=".activities.SignUpActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name="com.app.budsbank.activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.app.budsbank.activities.LoginActivity"
+            android:name=".activities.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name="com.app.budsbank.activities.OnBoardingHomeActivity"
+            android:name=".activities.OnBoardingHomeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.app.budsbank.activities.AgeGateActivity"
+            android:name=".activities.AgeGateActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.app.budsbank.activities.SplashActivity"
+            android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
@@ -99,7 +99,7 @@
         </activity>
 
         <service
-            android:name="com.app.budsbank.fcm.BudsBankFirebaseMessagingService"
+            android:name=".fcm.BudsBankFirebaseMessagingService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
