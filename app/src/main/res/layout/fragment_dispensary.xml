@@ -47,7 +47,7 @@
             style="@style/AppTheme.Widget.TextView.Medium"
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:text="@string/shop"
+            android:text="@string/shops"
             android:textAllCaps="true"
             android:layout_centerHorizontal="true"
             android:textSize="@dimen/_10sdp"
