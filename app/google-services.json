@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "245171685682",
-    "firebase_url": "https://budsbankfirebase.firebaseio.com",
-    "project_id": "budsbankfirebase",
-    "storage_bucket": "budsbankfirebase.appspot.com"
+    "project_number": "166118775453",
+    "firebase_url": "https://buds-bank.firebaseio.com",
+    "project_id": "buds-bank",
+    "storage_bucket": "buds-bank.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:245171685682:android:c31caab1d6748dafa0ef2b",
+        "mobilesdk_app_id": "1:166118775453:android:dd129d35f9205add565274",
         "android_client_info": {
-          "package_name": "com.app.budbank"
+          "package_name": "com.app.budsbank"
         }
       },
       "oauth_client": [
         {
-          "client_id": "245171685682-fou8tdkbt61rsob40ehd1fasrtppa2lj.apps.googleusercontent.com",
+          "client_id": "166118775453-sk05q47l2iuctvpad51dmnuckjj4jfaa.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDTia6Y5S81ote5Ul9P8DRJa6M5OtYo3EU"
+          "current_key": "AIzaSyD775c7bs2-qPrHc4dRk2krJeSaigpO5EA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "245171685682-fou8tdkbt61rsob40ehd1fasrtppa2lj.apps.googleusercontent.com",
+              "client_id": "166118775453-sk05q47l2iuctvpad51dmnuckjj4jfaa.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

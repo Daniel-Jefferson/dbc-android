@@ -35,10 +35,11 @@
             android:text="@string/sign_up"
             android:layout_marginTop="@dimen/_15sdp"
             />
+
         <Button
             style="@style/AppTheme.Widget.Button.Transparent"
             android:text="@string/how_does_it_work"
 
-            />
+            android:visibility="invisible" />
     </LinearLayout>
 </RelativeLayout>
