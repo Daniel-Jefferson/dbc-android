@@ -228,7 +228,7 @@
                     <ImageView
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_40sdp"
-                        android:src="@drawable/ic_tab_brain" />
+                        android:src="@drawable/ic_pink_brain_off" />
 
                     <View
                         android:layout_width="1dp"
