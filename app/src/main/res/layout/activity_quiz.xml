@@ -24,6 +24,155 @@
             android:scaleType="fitXY"
             android:src="@drawable/quiz_blue_bg" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/quiz_bg"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_brain"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/brain_animation_list" />
+
+
+                <TextView
+                    android:id="@+id/tv_question"
+                    style="@style/AppTheme.Widget.TextView.SemiBold"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:text="@string/qns"
+                    android:textColor="@color/blue_11"
+                    android:textSize="@dimen/_13ssp"
+                    android:visibility="invisible" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_option_one"
+                    style="@style/Layout_Options"
+                    android:visibility="invisible">
+
+                    <ImageView
+                        android:id="@+id/icon_option1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_toStartOf="@+id/tv_option_one"
+                        android:src="@drawable/ic_tick"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_option_one"
+                        style="@style/TextView_Options"
+                        android:text="@string/rhode" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_option_two"
+                    style="@style/Layout_Options"
+                    android:visibility="invisible">
+
+                    <ImageView
+                        android:id="@+id/icon_option2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_toStartOf="@+id/tv_option_two"
+                        android:src="@drawable/ic_tick"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_option_two"
+                        style="@style/TextView_Options"
+                        android:text="@string/maine" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_option_three"
+                    style="@style/Layout_Options"
+                    android:visibility="invisible">
+
+                    <ImageView
+                        android:id="@+id/icon_option3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_toStartOf="@+id/tv_option_three"
+                        android:src="@drawable/ic_tick"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_option_three"
+                        style="@style/TextView_Options"
+                        android:text="@string/washington" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_option_four"
+                    style="@style/Layout_Options"
+                    android:visibility="invisible">
+
+                    <ImageView
+                        android:id="@+id/icon_option4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_toStartOf="@+id/tv_option_four"
+                        android:src="@drawable/ic_tick"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_option_four"
+                        style="@style/TextView_Options"
+                        android:text="@string/florida" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_17sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/AppTheme.Widget.TextView.Transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/_14ssp"
+                    android:text="@string/your_next_joint_could_be_on" />
+                <TextView
+                    android:id="@+id/tv_business_name"
+                    style="@style/AppTheme.Widget.TextView.Bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/_14ssp"
+                    android:text="Business Name" />
+            </LinearLayout>
+        </LinearLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,14 +188,6 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/cross" />
 
-            <TextView
-                android:id="@+id/tv_qns_no"
-                style="@style/AppTheme.Widget.TextView.SemiBold"
-                android:layout_centerHorizontal="true"
-                android:text="@string/question_number"
-                android:textColor="@color/yellow_68"
-                android:textSize="@dimen/_11sdp" />
-
             <ImageView
                 android:id="@+id/iv_progbar"
                 android:layout_width="match_parent"
@@ -59,127 +200,16 @@
                 android:background="@drawable/progbar_animation_list"
                 android:scaleType="fitXY" />
 
+            <TextView
+                android:id="@+id/tv_qns_no"
+                style="@style/AppTheme.Widget.TextView.SemiBold"
+                android:layout_centerHorizontal="true"
+                android:text="@string/question_number"
+                android:textColor="@color/yellow_68"
+                android:textSize="@dimen/_11sdp" />
+
 
         </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="@dimen/_25sdp"
-            android:layout_marginEnd="@dimen/_25sdp"
-            android:background="@drawable/quiz_bg"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iv_brain"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:background="@drawable/brain_animation_list" />
-
-            <TextView
-                android:id="@+id/tv_question"
-                style="@style/AppTheme.Widget.TextView.SemiBold"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:layout_marginBottom="@dimen/_2sdp"
-                android:text="@string/qns"
-                android:textColor="@color/blue_11"
-                android:textSize="@dimen/_13ssp"
-                android:visibility="invisible" />
-
-            <RelativeLayout
-                android:id="@+id/rl_option_one"
-                style="@style/Layout_Options"
-                android:visibility="invisible">
-
-                <ImageView
-                    android:id="@+id/icon_option1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_toStartOf="@+id/tv_option_one"
-                    android:src="@drawable/ic_tick"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/tv_option_one"
-                    style="@style/TextView_Options"
-                    android:text="@string/rhode" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rl_option_two"
-                style="@style/Layout_Options"
-                android:visibility="invisible">
-
-                <ImageView
-                    android:id="@+id/icon_option2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_toStartOf="@+id/tv_option_two"
-                    android:src="@drawable/ic_tick"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/tv_option_two"
-                    style="@style/TextView_Options"
-                    android:text="@string/maine" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rl_option_three"
-                style="@style/Layout_Options"
-                android:visibility="invisible">
-
-                <ImageView
-                    android:id="@+id/icon_option3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_toStartOf="@+id/tv_option_three"
-                    android:src="@drawable/ic_tick"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/tv_option_three"
-                    style="@style/TextView_Options"
-                    android:text="@string/washington" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rl_option_four"
-                style="@style/Layout_Options"
-                android:visibility="invisible">
-
-                <ImageView
-                    android:id="@+id/icon_option4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_toStartOf="@+id/tv_option_four"
-                    android:src="@drawable/ic_tick"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/tv_option_four"
-                    style="@style/TextView_Options"
-                    android:text="@string/florida" />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_17sdp" />
-
-        </LinearLayout>
 
 
     </RelativeLayout>

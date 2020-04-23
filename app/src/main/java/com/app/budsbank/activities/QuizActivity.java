@@ -29,6 +29,8 @@ import com.app.budsbank.utils.cacheUtils.MainStorageUtils;
 import com.app.budsbank.web.APIController;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,6 +75,8 @@ public class QuizActivity extends BaseActivity {
     ImageView iconOption3;
     @BindView(R.id.icon_option4)
     ImageView iconOption4;
+    @BindView(R.id.tv_business_name)
+    TextView tvBusinessName;
     private CountDownTimer mCountDownTimer;
     ArrayList<QuizQuestionsModel> questionsModels;
     private int currentQuestion = 0;
@@ -119,11 +123,13 @@ public class QuizActivity extends BaseActivity {
         ArrayList<QuizOptionModel> options = quizQuestionsModel.getOptions();
         tvQuestion.setText(quizQuestionsModel.getQuestion());
         if (options != null && options.size() >= 4) {
+            Collections.shuffle(options, new Random());
             setOption(tvOptionOne, options.get(0));
             setOption(tvOptionTwo, options.get(1));
             setOption(tvOptionThree, options.get(2));
             setOption(tvOptionFour, options.get(3));
         }
+        tvBusinessName.setText(dispensaryModel.getName());
         setAnimationOnQuestion();
     }
 

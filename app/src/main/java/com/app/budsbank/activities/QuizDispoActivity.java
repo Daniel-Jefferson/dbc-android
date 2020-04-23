@@ -269,7 +269,7 @@ public class QuizDispoActivity extends BaseActivity {
                 layoutDispoContact.setVisibility(View.VISIBLE);
                 btnPiggyBank.setVisibility(View.VISIBLE);
                 tvGoBack.setText(R.string.close);
-                tvChooseDispensary.setText(R.string.dispensaries);
+                tvChooseDispensary.setText(R.string.shops);
                 btnPiggyBank.setOnClickListener(this);
                 layoutCallNow.setOnClickListener(this);
                 layoutDirections.setOnClickListener(this);
