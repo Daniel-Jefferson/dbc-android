@@ -143,7 +143,9 @@ public class SettingsActivity  extends BaseActivity implements View.OnClickListe
 
     private void actionLogout() {
         StorageUtillity.clearAllPreferences(mContext);
-        startActivity(new Intent(mContext, LoginActivity.class));
+        Intent intent = new Intent(mContext, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
         ((BaseActivity)mContext).finish();
     }
 
