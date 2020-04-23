@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.budbank">
+    package="com.app.budsbank">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -31,64 +31,64 @@
         </provider>
 
         <activity
-            android:name=".activities.InboxActivity"
+            android:name="com.app.budsbank.activities.InboxActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".activities.SettingsActivity"
+            android:name="com.app.budsbank.activities.SettingsActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".activities.NotificationSettingsActivity"
+            android:name="com.app.budsbank.activities.NotificationSettingsActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".activities.ForgotPasswordActivity"
+            android:name="com.app.budsbank.activities.ForgotPasswordActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".activities.GameSummaryActivity"
+            android:name="com.app.budsbank.activities.GameSummaryActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".activities.QuizActivity"
+            android:name="com.app.budsbank.activities.QuizActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".activities.SearchActivity"
+            android:name="com.app.budsbank.activities.SearchActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible" />
         <activity
-            android:name=".activities.QuizDispoActivity"
+            android:name="com.app.budsbank.activities.QuizDispoActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".activities.ProfileActivity"
+            android:name="com.app.budsbank.activities.ProfileActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.SignUpActivity"
+            android:name="com.app.budsbank.activities.SignUpActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.app.budsbank.activities.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name="com.app.budsbank.activities.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activities.OnBoardingHomeActivity"
+            android:name="com.app.budsbank.activities.OnBoardingHomeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".activities.AgeGateActivity"
+            android:name="com.app.budsbank.activities.AgeGateActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".activities.SplashActivity"
+            android:name="com.app.budsbank.activities.SplashActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
@@ -99,7 +99,7 @@
         </activity>
 
         <service
-            android:name=".fcm.BudsBankFirebaseMessagingService"
+            android:name="com.app.budsbank.fcm.BudsBankFirebaseMessagingService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
