@@ -1,8 +1,7 @@
 package com.app.budsbank.web;
 
 public class WebConfig {
-//    private static final String BASE_URL                             = "http://ec2-18-188-251-85.us-east-2.compute.amazonaws.com/";
-    private static final String BASE_URL                             = "http://192.168.6.150:3300/";
+    private static final String BASE_URL                             = "http://ec2-18-188-251-85.us-east-2.compute.amazonaws.com/";
     public static final String API_URL                               = BASE_URL;
 
     // TODO: Update for local
