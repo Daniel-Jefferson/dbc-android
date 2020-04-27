@@ -242,6 +242,16 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tv_app_version"
+                style="@style/AppTheme.Widget.TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="app version 2.2.1"
+                android:textColor="@color/black_22"
+                />
+
         </LinearLayout>
 
     </ScrollView>
