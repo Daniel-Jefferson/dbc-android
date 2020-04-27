@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.app.budsbank.BuildConfig;
 import com.app.budsbank.R;
 import com.app.budsbank.models.UserModel;
 import com.app.budsbank.utils.AppConstants;
@@ -48,6 +49,8 @@ public class SettingsActivity  extends BaseActivity implements View.OnClickListe
     RelativeLayout lytFeedback;
     @BindView(R.id.tv_logout)
     TextView tvLogout;
+    @BindView(R.id.tv_app_version)
+    TextView tvAppVersion;
 
     private SettingsActivity.LocalBroadcast localBroadcast;
 
@@ -79,6 +82,9 @@ public class SettingsActivity  extends BaseActivity implements View.OnClickListe
             }
         } else
             ivProfile.setImageResource(R.drawable.user_placeholder);
+
+        String versionName = BuildConfig.VERSION_NAME;
+        tvAppVersion.setText("app version " + versionName);
     }
 
     private void initViews() {
