@@ -187,9 +187,11 @@ public class QuizDispoActivity extends BaseActivity {
         if(enable) {
             btnPlay.setEnabled(true);
             btnPlay.setBackgroundResource(R.drawable.alert_btn_selecter);
+            btnPlay.setText(R.string.start_quiz);
         } else {
             btnPlay.setEnabled(false);
-            btnPlay.setBackgroundResource(R.drawable.alert_btn_disabled);
+            btnPlay.setBackgroundResource(R.drawable.alert_btn_selecter);
+            btnPlay.setText(R.string.follow_to_play);
         }
     }
 
