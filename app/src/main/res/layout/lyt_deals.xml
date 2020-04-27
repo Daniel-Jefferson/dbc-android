@@ -25,8 +25,11 @@
             android:paddingBottom="@dimen/_15sdp">
 
             <LinearLayout
+                android:id="@+id/lyt_deal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -90,6 +93,30 @@
                     android:text="@string/expand"
                     android:textColor="@color/blue_70"
                     android:textSize="@dimen/_11ssp" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_profile_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_34sdp">
+
+                    <TextView
+                        android:id="@+id/tv_redeem"
+                        style="@style/AppTheme.Widget.TextView.SemiBold"
+                        android:layout_centerVertical="true"
+                        android:text="@string/view_profile"
+                        android:textColor="@color/green_47"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <ImageView
+                        android:id="@+id/iv_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:src="@drawable/arrow_green" />
+                </RelativeLayout>
             </LinearLayout>
 
         </RelativeLayout>
