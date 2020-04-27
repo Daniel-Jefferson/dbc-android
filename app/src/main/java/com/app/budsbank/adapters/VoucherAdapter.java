@@ -58,11 +58,11 @@ public class VoucherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         mViewHolder.tvAddress.setText(model.getDispensaryAddress());
         if(isFrom!=null && !TextUtils.isEmpty(isFrom)) {
             if(isFrom.equals(AppConstants.IsFrom.DISPENSARY_FRAGMENT.getValue())) {
-                mViewHolder.tvRedeem.setText(R.string.redeem);
+                mViewHolder.tvRedeem.setText(R.string.learn_more);
             } else if(isFrom.equals(AppConstants.IsFrom.QUIZ_FRAGMENT.getValue())) {
                 mViewHolder.tvRedeem.setText(R.string.start_quiz);
             } else if(isFrom.equals(AppConstants.IsFrom.HOME_FRAGMENT.getValue())) {
-                mViewHolder.tvRedeem.setText(R.string.learn_more);
+                mViewHolder.tvRedeem.setText(R.string.redeem);
             }
         }
 
