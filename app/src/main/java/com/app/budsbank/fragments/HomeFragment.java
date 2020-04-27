@@ -215,7 +215,7 @@ public class HomeFragment extends BaseFragment {
     private void setupAdapter() {
         linearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
         rvCollections.setLayoutManager(linearLayoutManager);
-        VoucherAdapter dispensaryAdapter = new VoucherAdapter(mContext, collectionsList, AppConstants.IsFrom.HOME_FRAGMENT.getValue());
+        VoucherAdapter dispensaryAdapter = new VoucherAdapter(mContext, communicator, collectionsList, AppConstants.IsFrom.HOME_FRAGMENT.getValue());
         rvCollections.setAdapter(dispensaryAdapter);
     }
 
