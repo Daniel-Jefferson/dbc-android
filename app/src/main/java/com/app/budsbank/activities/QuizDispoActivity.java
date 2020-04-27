@@ -190,7 +190,7 @@ public class QuizDispoActivity extends BaseActivity {
             btnPlay.setText(R.string.start_quiz);
         } else {
             btnPlay.setEnabled(false);
-            btnPlay.setBackgroundResource(R.drawable.alert_btn_selecter);
+            btnPlay.setBackgroundResource(R.drawable.alert_btn_disabled);
             btnPlay.setText(R.string.follow_to_play);
         }
     }
