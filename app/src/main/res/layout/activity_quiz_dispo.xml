@@ -21,7 +21,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_100sdp"
-                android:background="@color/blue_11" />
+                android:background="@drawable/inbox_header_bg" />
 
             <TextView
                 android:id="@+id/tv_choose_dispensary"
@@ -40,21 +40,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_choose_dispensary">
-                <com.github.piasy.fresco.draweeview.shaped.ShapedDraweeView
-                    android:id="@+id/iv_dispensary_bg"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_150sdp"
-                    android:scaleType="fitXY"
-                    app:maskShape="@drawable/ic_rounded_mask"
-                    app:placeholder="@drawable/ic_placeholder_black" />
+<!--                <com.github.piasy.fresco.draweeview.shaped.ShapedDraweeView-->
+<!--                    android:id="@+id/iv_dispensary_bg"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="@dimen/_150sdp"-->
+<!--                    android:scaleType="fitXY"-->
+<!--                    app:maskShape="@drawable/ic_rounded_mask"-->
+<!--                    app:placeholder="@drawable/ic_placeholder_black" />-->
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_120sdp"
                     >
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/blue11_grad_solid_bg"/>
+                        android:layout_height="match_parent"/>
                 </FrameLayout>
 
                 <TextView
