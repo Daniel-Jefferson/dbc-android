@@ -196,7 +196,7 @@
                         android:layout_marginStart="@dimen/_25sdp"
                         android:textAllCaps="true"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:text="@string/dispensary"
+                        android:text="@string/vouchers"
                         android:letterSpacing=".1"
                         android:textColor="@color/blue_11_50"
                         android:textSize="@dimen/_8ssp" />
