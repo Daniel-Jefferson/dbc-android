@@ -122,7 +122,7 @@ public class AllDealsFragment extends BaseFragment {
     private void setupAdapter() {
         linearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         rvAllDeals.setLayoutManager(linearLayoutManager);
-        allDealsAdapter = new AllDealsAdapter(mContext, allDispensaries);
+        allDealsAdapter = new AllDealsAdapter(mContext, allDispensaries, AppConstants.IsFrom.DEALS_FRAGMENT.getValue());
         rvAllDeals.setAdapter(allDealsAdapter);
     }
 
