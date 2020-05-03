@@ -10,10 +10,8 @@ public class SignupModel {
     private String email;
     @SerializedName("password")
     private String password;
-    @SerializedName("firstName")
-    private String firstName;
-    @SerializedName("lastName")
-    private String lastname;
+    @SerializedName("fullName")
+    private String fullName;
     @SerializedName("phone")
     private String phone;
 
@@ -44,20 +42,12 @@ public class SignupModel {
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getPhone() {

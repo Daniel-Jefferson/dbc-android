@@ -206,8 +206,7 @@ public class APIController {
                 sessionToken,
                 RequestBody.create(MultipartBody.FORM, updateUserModel.getUserId()),
                 RequestBody.create(MultipartBody.FORM, updateUserModel.getUserName()),
-                RequestBody.create(MultipartBody.FORM, updateUserModel.getFirstname()),
-                RequestBody.create(MultipartBody.FORM, updateUserModel.getLastName()),
+                RequestBody.create(MultipartBody.FORM, updateUserModel.getFullName()),
                 RequestBody.create(MultipartBody.FORM, updateUserModel.getPhoneNumber()),
                 body
         );

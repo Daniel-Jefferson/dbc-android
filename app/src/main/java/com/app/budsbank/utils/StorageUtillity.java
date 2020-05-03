@@ -74,8 +74,7 @@ public class StorageUtillity {
         editor.putString(AppConstants.SharedPreferencesKeys.EMAIL.getValue(), user.getEmail());
         editor.putString(AppConstants.SharedPreferencesKeys.EMAIL_VERIFIED_AT.getValue(), user.getEmailVerifiedAt());
         editor.putString(AppConstants.SharedPreferencesKeys.USERNAME.getValue(), user.getUsername());
-        editor.putString(AppConstants.SharedPreferencesKeys.FIRST_NAME.getValue(), user.getFirstName());
-        editor.putString(AppConstants.SharedPreferencesKeys.LAST_NAME.getValue(), user.getLastName());
+        editor.putString(AppConstants.SharedPreferencesKeys.FULL_NAME.getValue(), user.getFullName());
         editor.putString(AppConstants.SharedPreferencesKeys.PROFILE_IMAGE.getValue(), user.getProfileUrl());
         String coinStr = user.getCoinsEarned();
         if(Integer.parseInt(coinStr) <= 0)
@@ -91,8 +90,7 @@ public class StorageUtillity {
         model.setEmail(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.EMAIL.getValue(), ""));
         model.setEmailVerifiedAt(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.EMAIL_VERIFIED_AT.getValue(), ""));
         model.setUsername(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.USERNAME.getValue(), ""));
-        model.setFirstName(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.FIRST_NAME.getValue(), ""));
-        model.setLastName(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.LAST_NAME.getValue(), ""));
+        model.setFullName(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.FULL_NAME.getValue(), ""));
         model.setProfileUrl(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.PROFILE_IMAGE.getValue(), ""));
         model.setCoinsEarned(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.COINS_EARNED.getValue(), ""));
         return model;

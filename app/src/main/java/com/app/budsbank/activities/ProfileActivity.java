@@ -53,10 +53,8 @@ public class ProfileActivity extends BaseActivity {
     ImageView ivBack;
     @BindView(R.id.et_phone_number)
     EditText etPhoneNumber;
-    @BindView(R.id.et_first_name)
-    EditText etFirstname;
-    @BindView(R.id.et_last_name)
-    EditText etLastName;
+    @BindView(R.id.et_full_name)
+    EditText etFullname;
     @BindView(R.id.et_username)
     EditText etUserName;
     @BindView(R.id.btn_update)
@@ -118,10 +116,8 @@ public class ProfileActivity extends BaseActivity {
         String number = phoneNumber.replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
         etPhoneNumber.setText(number);
         etPhoneNumber.setSelection(etPhoneNumber.getText().length());
-        etFirstname.setText(user.getFirstName());
-        etFirstname.setSelection(etFirstname.getText().length());
-        etLastName.setText(user.getLastName());
-        etLastName.setSelection(etLastName.getText().length());
+        etFullname.setText(user.getFullName());
+        etFullname.setSelection(etFullname.getText().length());
         etUserName.setText(user.getUsername());
         etUserName.setSelection(etUserName.getText().length());
         tvUserName.setText(user.getUsername());
@@ -129,7 +125,7 @@ public class ProfileActivity extends BaseActivity {
 
     private void updateUserProfile(String sessionToken, UpdateUserModel updateUserModel) {
         if (!BudsBankUtils.isNetworkAvailable(this)) {
-            DialogUtils.showSnackBar(etFirstname, getString(R.string.no_internet_alert), mContext);
+            DialogUtils.showSnackBar(etFullname, getString(R.string.no_internet_alert), mContext);
             DialogUtils.stopLoading();
             return;
         }
@@ -139,7 +135,7 @@ public class ProfileActivity extends BaseActivity {
             public void onResponse(@NonNull Call<UpdateUserResponseModel> call, @NonNull final Response<UpdateUserResponseModel> response) {
                 DialogUtils.dismiss();
                 if (!response.isSuccessful()) {
-                    DialogUtils.showSnackBar(etFirstname, getString(R.string.call_fail_error), mContext);
+                    DialogUtils.showSnackBar(etFullname, getString(R.string.call_fail_error), mContext);
                     return;
                 }
                 UpdateUserResponseModel updateUserResponseModel = response.body();
@@ -147,20 +143,20 @@ public class ProfileActivity extends BaseActivity {
                     if (updateUserResponseModel.getStatus() == AppConstants.StatusCodes.SUCCESS.getValue()) {
                         StorageUtillity.saveUserModel(mContext, updateUserResponseModel.getUser());
                         populateUserData();
-                        DialogUtils.showSnackBar(etFirstname, updateUserResponseModel.getMessage(), Snackbar.LENGTH_LONG,mContext);
+                        DialogUtils.showSnackBar(etFullname, updateUserResponseModel.getMessage(), Snackbar.LENGTH_LONG,mContext);
                         BudsBankUtils.broadcastProfileUpdate(mContext);
                     } else {
-                        DialogUtils.showSnackBar(etFirstname, updateUserResponseModel.getMessage(), Snackbar.LENGTH_LONG,mContext);
+                        DialogUtils.showSnackBar(etFullname, updateUserResponseModel.getMessage(), Snackbar.LENGTH_LONG,mContext);
                     }
                     return;
                 }
-                DialogUtils.showSnackBar(etFirstname, getString(R.string.call_fail_error), mContext);
+                DialogUtils.showSnackBar(etFullname, getString(R.string.call_fail_error), mContext);
             }
             @Override
             public void onFailure(@NonNull Call<UpdateUserResponseModel> call, @NonNull Throwable t) {
                 DialogUtils.dismiss();
                 populateUserData();
-                DialogUtils.showErrorBasedOnType(mContext, etFirstname, t);
+                DialogUtils.showErrorBasedOnType(mContext, etFullname, t);
                 Log.d("error", "onFailure:" + t.getMessage());
             }
         });
@@ -172,8 +168,7 @@ public class ProfileActivity extends BaseActivity {
             UpdateUserModel updateUserModel = new UpdateUserModel();
             updateUserModel.setUserId(StorageUtillity.getDataFromPreferences(mContext, AppConstants.SharedPreferencesKeys.USER_ID.getValue(), ""));
             updateUserModel.setUserName(etUserName.getText().toString());
-            updateUserModel.setFirstname(etFirstname.getText().toString());
-            updateUserModel.setLastName(etLastName.getText().toString());
+            updateUserModel.setFullName(etFullname.getText().toString());
             String phoneNumber = etPhoneNumber.getText().toString();
             phoneNumber = phoneNumber.replaceAll("-", "").trim();
             updateUserModel.setPhoneNumber(phoneNumber);
@@ -185,19 +180,19 @@ public class ProfileActivity extends BaseActivity {
     private boolean validate() {
         UserModel userModel = StorageUtillity.getUserModel(mContext);
         String phonenumber = etPhoneNumber.getText().toString().replaceAll("-", "");
-        if(TextUtils.isEmpty(phonenumber) || TextUtils.isEmpty(etFirstname.getText().toString()) || TextUtils.isEmpty(etLastName.getText().toString()) || TextUtils.isEmpty(etUserName.getText().toString())) {
-            DialogUtils.showSnackBar(etFirstname, getString(R.string.fill_all_fields), Snackbar.LENGTH_LONG,mContext);
+        if(TextUtils.isEmpty(phonenumber) || TextUtils.isEmpty(etFullname.getText().toString()) || TextUtils.isEmpty(etUserName.getText().toString())) {
+            DialogUtils.showSnackBar(etFullname, getString(R.string.fill_all_fields), Snackbar.LENGTH_LONG,mContext);
             return false;
         } else if (phonenumber.length()!=10){
-            DialogUtils.showSnackBar(etFirstname, getString(R.string.enter_valid_phone), Snackbar.LENGTH_LONG,mContext);
+            DialogUtils.showSnackBar(etFullname, getString(R.string.enter_valid_phone), Snackbar.LENGTH_LONG,mContext);
             return false;
         }
-        if (!etFirstname.getText().toString().equals(userModel.getFirstName()) || !etLastName.getText().toString().equals(userModel.getLastName())
+        if (!etFullname.getText().toString().equals(userModel.getFullName())
                 || !etUserName.getText().toString().equals(userModel.getUsername()) || !phonenumber.equals(userModel.getPhoneNumber())
                 || (profileUrl!=null && !profileUrl.equals(userModel.getProfileUrl()))) {
             return true;
         } else {
-            DialogUtils.showSnackBar(etFirstname, getString(R.string.no_value_changed), Snackbar.LENGTH_LONG,mContext);
+            DialogUtils.showSnackBar(etFullname, getString(R.string.no_value_changed), Snackbar.LENGTH_LONG,mContext);
             return false;
         }
     }

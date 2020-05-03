@@ -46,10 +46,8 @@ public class SignUpActivity extends BaseActivity {
     EditText etEmail;
     @BindView(R.id.et_username)
     EditText etUsername;
-    @BindView(R.id.et_first_name)
-    EditText etFirstname;
-    @BindView(R.id.et_last_name)
-    EditText etLastname;
+    @BindView(R.id.et_full_name)
+    EditText etFullname;
     @BindView(R.id.et_password)
     EditText etPassword;
     @BindView(R.id.et_confirm_password)
@@ -123,7 +121,7 @@ public class SignUpActivity extends BaseActivity {
             DialogUtils.showSnackBar(etPhoneNumber, getString(R.string.enter_phone), mContext);
             return false;
         } else if(phoneNumber.length()!=10){
-            DialogUtils.showSnackBar(etFirstname, getString(R.string.enter_valid_phone), Snackbar.LENGTH_LONG,mContext);
+            DialogUtils.showSnackBar(etFullname, getString(R.string.enter_valid_phone), Snackbar.LENGTH_LONG,mContext);
             return false;
         }
 
@@ -140,13 +138,8 @@ public class SignUpActivity extends BaseActivity {
             return false;
         }
 
-        if (TextUtils.isEmpty(etFirstname.getText())) {
-            DialogUtils.showSnackBar(etFirstname, getString(R.string.fill_all_fields),mContext);
-            return false;
-        }
-
-        if (TextUtils.isEmpty(etLastname.getText())) {
-            DialogUtils.showSnackBar(etLastname, getString(R.string.fill_all_fields),mContext);
+        if (TextUtils.isEmpty(etFullname.getText())) {
+            DialogUtils.showSnackBar(etFullname, getString(R.string.fill_all_fields),mContext);
             return false;
         }
 
@@ -164,7 +157,7 @@ public class SignUpActivity extends BaseActivity {
         }
 
         if (!(etConfirmPassword.getText().toString()).equals(etPassword.getText().toString())) {
-            DialogUtils.showSnackBar(etLastname, getString(R.string.password_mismatch),mContext);
+            DialogUtils.showSnackBar(etFullname, getString(R.string.password_mismatch),mContext);
             return false;
         } else {
             return true;
@@ -211,8 +204,7 @@ public class SignUpActivity extends BaseActivity {
         SignupModel model = new SignupModel();
         model.setUsername(etUsername.getText().toString());
         model.setEmail(etEmail.getText().toString());
-        model.setFirstName(etFirstname.getText().toString());
-        model.setLastname(etLastname.getText().toString());
+        model.setFullName(etFullname.getText().toString());
         String number = getPhoneNumber();
         model.setPhone(number);
         model.setPassword(etPassword.getText().toString());
