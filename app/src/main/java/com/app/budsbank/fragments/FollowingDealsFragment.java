@@ -110,7 +110,7 @@ public class FollowingDealsFragment extends BaseFragment {
     private void setupAdapter() {
         linearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         rvFollowingDeals.setLayoutManager(linearLayoutManager);
-        dealsAdapter = new DealsAdapter(mContext, followedDispensaries);
+        dealsAdapter = new DealsAdapter(mContext, followedDispensaries, AppConstants.IsFrom.DEALS_FRAGMENT.getValue());
         rvFollowingDeals.setAdapter(dealsAdapter);
     }
 

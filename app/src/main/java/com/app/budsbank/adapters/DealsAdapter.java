@@ -1,20 +1,28 @@
 package com.app.budsbank.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.budsbank.R;
+import com.app.budsbank.activities.ProfileActivity;
+import com.app.budsbank.activities.QuizDispoActivity;
+import com.app.budsbank.models.DispensaryModel;
 import com.app.budsbank.models.FollowedDispensariesModel;
+import com.app.budsbank.utils.AppConstants;
 import com.app.budsbank.utils.TextUtils;
+import com.app.budsbank.utils.cacheUtils.MainStorageUtils;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -25,11 +33,16 @@ public class DealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private LayoutInflater inflater;
     private Context mContext;
     private ArrayList<FollowedDispensariesModel> followedDispensaries;
+    private ArrayList<DispensaryModel> dispensaryModels;
+    private String isFrom;
 
-    public DealsAdapter(Context mContext, ArrayList<FollowedDispensariesModel> followedDispensaries) {
+    public DealsAdapter(Context mContext, ArrayList<FollowedDispensariesModel> followedDispensaries, String isFrom) {
         this.mContext = mContext;
         this.followedDispensaries = followedDispensaries;
         inflater = LayoutInflater.from(mContext);
+        this.isFrom = isFrom;
+        MainStorageUtils mainStorageUtils = MainStorageUtils.getInstance();
+        dispensaryModels = mainStorageUtils.getDispensariesList();
     }
 
     @NonNull
@@ -55,18 +68,42 @@ public class DealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         mViewHolder.tvDispTitle.setText(model.getName());
         mViewHolder.expandableDeal.setText(model.getDeal());
         setExpandButtonVisibility(mViewHolder.expandableDeal, mViewHolder.tvExpand);
+        mViewHolder.rlProfileView.setVisibility(View.GONE);
         mViewHolder.tvExpand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mViewHolder.expandableDeal.isExpanded())
-                {
-                    mViewHolder.expandableDeal.collapse();
-                    mViewHolder.tvExpand.setText(R.string.expand);
+                mViewHolder.expandableDeal.expand();
+                mViewHolder.tvExpand.setText(R.string.collapse);
+                mViewHolder.tvExpand.setVisibility(View.GONE);
+                mViewHolder.rlProfileView.setVisibility(View.VISIBLE);
+            }
+        });
+
+        mViewHolder.lytDeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mViewHolder.expandableDeal.collapse();
+                mViewHolder.tvExpand.setText(R.string.expand);
+                mViewHolder.tvExpand.setVisibility(View.VISIBLE);
+                mViewHolder.rlProfileView.setVisibility(View.GONE);
+            }
+        });
+
+        mViewHolder.rlProfileView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, QuizDispoActivity.class);
+                intent.putExtra(AppConstants.ISFROM, isFrom);
+                DispensaryModel dModel = null;
+                for (DispensaryModel dispensaryModel: dispensaryModels) {
+                    if (dispensaryModel.getId() == model.getDispensaryId()) {
+                        dModel = dispensaryModel;
+                        break;
+                    }
                 }
-                else
-                {
-                    mViewHolder.expandableDeal.expand();
-                    mViewHolder.tvExpand.setText(R.string.collapse);
+                if (dModel != null) {
+                    intent.putExtra(AppConstants.IntentKeys.DISPENSARY_MODEL.getValue(), dModel);
+                    mContext.startActivity(intent);
                 }
             }
         });
@@ -104,16 +141,17 @@ public class DealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView tvDispTitle, tvExpand;
         ImageView ivProfile;
         ExpandableTextView expandableDeal;
-
+        RelativeLayout rlProfileView;
+        LinearLayout lytDeal;
 
         ViewHolder(View itemView) {
             super(itemView);
-
+            lytDeal = itemView.findViewById(R.id.lyt_deal);
             tvDispTitle = itemView.findViewById(R.id.tv_disp_name);
             ivProfile = itemView.findViewById(R.id.iv_profile);
             expandableDeal = itemView.findViewById(R.id.tv_deal);
             tvExpand = itemView.findViewById(R.id.expand_collapse);
-
+            rlProfileView = itemView.findViewById(R.id.rl_profile_view);
         }
     }
 }
