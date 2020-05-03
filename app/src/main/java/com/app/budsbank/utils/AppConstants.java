@@ -13,6 +13,7 @@ public class AppConstants {
     public enum IsFrom {
 
         DISPENSARY_FRAGMENT("dispensary_fragment"),
+        DEALS_FRAGMENT("deals_fragment"),
         QUIZ_FRAGMENT("quiz_fragment"),
         HOME_FRAGMENT("home_fragment"),
         UNREAD_NOTIFICATION_FRAGMENT("unread_notification_fragmetn"),

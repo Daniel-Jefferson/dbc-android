@@ -65,8 +65,8 @@ public class QuizDispoActivity extends BaseActivity {
     RelativeLayout layoutDirections;
     @BindView(R.id.rl_open_now)
     RelativeLayout layoutOpenNow;
-//    @BindView(R.id.iv_dispensary_bg)
-//    ShapedDraweeView ivDispensaryBg;
+    @BindView(R.id.iv_dispensary_bg)
+    ShapedDraweeView ivDispensaryBg;
     @BindView(R.id.ll_dispo_contact)
     LinearLayout layoutDispoContact;
     @BindView(R.id.tv_dispensary_name)
@@ -151,9 +151,9 @@ public class QuizDispoActivity extends BaseActivity {
         if (dispensaryModel == null)
             return;
         String profileUrl = dispensaryModel.getProfileUrl();
-//        if (profileUrl != null && !TextUtils.isEmpty(profileUrl)) {
-//            BudsBankUtils.loadImageFromURL(ivDispensaryBg, profileUrl);
-//        }
+        if (profileUrl != null && !TextUtils.isEmpty(profileUrl)) {
+            BudsBankUtils.loadImageFromURL(ivDispensaryBg, profileUrl);
+        }
         tvDispensaryName.setText(dispensaryModel.getName());
         tvDispensaryAddress.setText(dispensaryModel.getAddress());
         tvCoinsEarned.setText(StorageUtillity.getDataFromPreferences(this, AppConstants.SharedPreferencesKeys.COINS_EARNED.getValue(), "0"));

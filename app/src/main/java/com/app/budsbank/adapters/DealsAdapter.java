@@ -17,8 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.budsbank.R;
 import com.app.budsbank.activities.ProfileActivity;
+import com.app.budsbank.activities.QuizDispoActivity;
+import com.app.budsbank.models.DispensaryModel;
 import com.app.budsbank.models.FollowedDispensariesModel;
+import com.app.budsbank.utils.AppConstants;
 import com.app.budsbank.utils.TextUtils;
+import com.app.budsbank.utils.cacheUtils.MainStorageUtils;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -29,11 +33,16 @@ public class DealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private LayoutInflater inflater;
     private Context mContext;
     private ArrayList<FollowedDispensariesModel> followedDispensaries;
+    private ArrayList<DispensaryModel> dispensaryModels;
+    private String isFrom;
 
-    public DealsAdapter(Context mContext, ArrayList<FollowedDispensariesModel> followedDispensaries) {
+    public DealsAdapter(Context mContext, ArrayList<FollowedDispensariesModel> followedDispensaries, String isFrom) {
         this.mContext = mContext;
         this.followedDispensaries = followedDispensaries;
         inflater = LayoutInflater.from(mContext);
+        this.isFrom = isFrom;
+        MainStorageUtils mainStorageUtils = MainStorageUtils.getInstance();
+        dispensaryModels = mainStorageUtils.getDispensariesList();
     }
 
     @NonNull
@@ -83,7 +92,19 @@ public class DealsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         mViewHolder.rlProfileView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mContext.startActivity(new Intent(mContext, ProfileActivity.class));
+                Intent intent = new Intent(mContext, QuizDispoActivity.class);
+                intent.putExtra(AppConstants.ISFROM, isFrom);
+                DispensaryModel dModel = null;
+                for (DispensaryModel dispensaryModel: dispensaryModels) {
+                    if (dispensaryModel.getId() == model.getDispensaryId()) {
+                        dModel = dispensaryModel;
+                        break;
+                    }
+                }
+                if (dModel != null) {
+                    intent.putExtra(AppConstants.IntentKeys.DISPENSARY_MODEL.getValue(), dModel);
+                    mContext.startActivity(intent);
+                }
             }
         });
     }
