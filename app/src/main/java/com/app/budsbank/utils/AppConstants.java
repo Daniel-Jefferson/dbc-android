@@ -46,8 +46,7 @@ public class AppConstants {
         EMAIL("user_email"),
         EMAIL_VERIFIED_AT("user_email_verified_at"),
         USERNAME("username"),
-        FIRST_NAME("user_first_name"),
-        LAST_NAME("üser_last_name"),
+        FULL_NAME("user_full_name"),
         PROFILE_IMAGE("user_image"),
         COINS_EARNED("user_coins_earned");
         private String value;

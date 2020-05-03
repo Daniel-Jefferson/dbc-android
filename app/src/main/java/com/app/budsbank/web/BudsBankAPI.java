@@ -65,8 +65,7 @@ public interface BudsBankAPI {
     Call<UpdateUserResponseModel> updateUser(@Header("x-access-token") String sessionToken,
                                              @Part("user_id")RequestBody userId,
                                              @Part("username") RequestBody userName,
-                                             @Part("first_name") RequestBody firstName,
-                                             @Part("last_name") RequestBody lastName,
+                                             @Part("full_name") RequestBody fullName,
                                              @Part("phone") RequestBody phoneNumber,
                                              @Part MultipartBody.Part profileImage
     );

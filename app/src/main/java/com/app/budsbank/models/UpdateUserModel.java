@@ -7,10 +7,8 @@ public class UpdateUserModel {
     private String userId;
     @SerializedName("username")
     private String userName;
-    @SerializedName("first_name")
-    private String firstname;
-    @SerializedName("last_name")
-    private String lastName;
+    @SerializedName("full_name")
+    private String fullName;
     @SerializedName("phone")
     private String phoneNumber;
     @SerializedName("image")
@@ -36,20 +34,12 @@ public class UpdateUserModel {
         this.userName = userName;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getPhoneNumber() {

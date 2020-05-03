@@ -15,10 +15,8 @@ public class UserModel {
     private String emailVerifiedAt;
     @SerializedName("username")
     private String Username;
-    @SerializedName("first_name")
-    private String firstName;
-    @SerializedName("last_name")
-    private String lastName;
+    @SerializedName("full_name")
+    private String fullName;
     @SerializedName("image")
     private String profileUrl;
     @SerializedName("coins_earned")
@@ -67,20 +65,12 @@ public class UserModel {
         Username = username;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getPhoneNumber() {
