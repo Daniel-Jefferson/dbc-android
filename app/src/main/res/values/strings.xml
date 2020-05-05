@@ -95,6 +95,7 @@
     <string name="password_mismatch">Your password and confirm password mismatch</string>
     <string name="something_went_wrong">Oops!Something went wrong</string>
     <string name="link_sent_to_email">A reset link has been sent to your provided email</string>
+    <string name="link_sent_to_phone">A reset link has been sent to your provided phone number</string>
     <string name="gps_not_enabled">Gps is not enabled , enable it to proceed</string>
     <string name="location_not_enabled">Location not enabled</string>
     <string name="permission_denied">Permission Denied</string>

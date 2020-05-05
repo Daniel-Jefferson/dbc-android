@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+
 import com.app.budsbank.R;
 import com.app.budsbank.models.ForgetPasswordModel;
 import com.app.budsbank.models.ResponseModel;
@@ -16,6 +18,11 @@ import com.app.budsbank.utils.BudsBankUtils;
 import com.app.budsbank.utils.DialogUtils;
 import com.app.budsbank.web.APIController;
 import com.google.android.material.snackbar.Snackbar;
+import com.redmadrobot.inputmask.MaskedTextChangedListener;
+import com.redmadrobot.inputmask.helper.AffinityCalculationStrategy;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,8 +34,8 @@ public class ForgotPasswordActivity extends BaseActivity {
 
     @BindView(R.id.btn_confirm)
     Button btnConfirm;
-    @BindView(R.id.et_email)
-    EditText etEmail;
+    @BindView(R.id.et_phone)
+    EditText etPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,23 +49,48 @@ public class ForgotPasswordActivity extends BaseActivity {
 
     private void initViews() {
         btnConfirm.setOnClickListener(this);
+        setTextWatcher();
+    }
+
+    private String getPhoneNumber() {
+        String phoneNumber = etPhone.getText().toString().replaceAll("[()-]", "").trim();
+        phoneNumber = phoneNumber.replaceAll(" ","");
+        return phoneNumber;
     }
 
     private void validate() {
-        String email = etEmail.getText().toString();
-        if(!TextUtils.isEmpty(email) && BudsBankUtils.isValidEmail(email)) {
+        String email = getPhoneNumber();
+        if(email.length() == 10) {
             sendPassword(email);
         } else if (TextUtils.isEmpty(email)) {
-            DialogUtils.showSnackBar(etEmail, getString(R.string.enter_email), Snackbar.LENGTH_LONG,mContext);
-        } else if (!BudsBankUtils.isValidEmail(email)) {
-            DialogUtils.showSnackBar(etEmail, getString(R.string.enter_valid_email), Snackbar.LENGTH_LONG,mContext);
+            DialogUtils.showSnackBar(etPhone, getString(R.string.enter_phone), Snackbar.LENGTH_LONG,mContext);
+        } else if (email.length() != 10) {
+            DialogUtils.showSnackBar(etPhone, getString(R.string.enter_valid_phone), Snackbar.LENGTH_LONG,mContext);
         }
+    }
+
+    private void setTextWatcher() {
+        final List<String> affineFormats = new ArrayList<>();
+        affineFormats.add("([000]) [000]-[0000]");
+
+        final MaskedTextChangedListener listener = MaskedTextChangedListener.Companion.installOn(
+                etPhone,
+                "[]",
+                affineFormats,
+                AffinityCalculationStrategy.WHOLE_STRING,
+                new MaskedTextChangedListener.ValueListener() {
+                    @Override
+                    public void onTextChanged(boolean maskFilled, @NonNull final String extractedValue, @NonNull String formattedText) {
+                        etPhone.setCursorVisible(true);
+                    }
+                }
+        );
     }
 
     private void sendPassword(String email) {
         ForgetPasswordModel forgetPasswordModel = new ForgetPasswordModel(email);
         if (!BudsBankUtils.isNetworkAvailable(mContext)) {
-            DialogUtils.showSnackBar(etEmail, getString(R.string.no_internet_alert), Snackbar.LENGTH_LONG, mContext);
+            DialogUtils.showSnackBar(etPhone, getString(R.string.no_internet_alert), Snackbar.LENGTH_LONG, mContext);
             DialogUtils.stopLoading();
             return;
         }
@@ -71,7 +103,7 @@ public class ForgotPasswordActivity extends BaseActivity {
                     if (response.isSuccessful()) {
                         ResponseModel responseModel = response.body();
                         if (responseModel.getStatus() == AppConstants.StatusCodes.SUCCESS.getValue()) {
-                            DialogUtils.showSnackBar(etEmail, getString(R.string.link_sent_to_email), Snackbar.LENGTH_LONG,mContext);
+                            DialogUtils.showSnackBar(etPhone, getString(R.string.link_sent_to_phone), Snackbar.LENGTH_LONG,mContext);
                             btnConfirm.setEnabled(false);
                             btnConfirm.setBackgroundResource(R.drawable.ic_btn_white_selected);
                             new CountDownTimer(30000, 1000) {
@@ -86,7 +118,7 @@ public class ForgotPasswordActivity extends BaseActivity {
                             }.start();
                             return;
                         } else {
-                            DialogUtils.showSnackBar(etEmail,responseModel.getMessage(), Snackbar.LENGTH_LONG,mContext);
+                            DialogUtils.showSnackBar(etPhone,responseModel.getMessage(), Snackbar.LENGTH_LONG,mContext);
                         }
                     }
                 }
@@ -95,7 +127,7 @@ public class ForgotPasswordActivity extends BaseActivity {
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
                 DialogUtils.dismiss();
-                DialogUtils.showErrorBasedOnType(mContext, etEmail, t);
+                DialogUtils.showErrorBasedOnType(mContext, etPhone, t);
                 Log.d("error", "onFailure: "+t.getMessage());
             }
         });
