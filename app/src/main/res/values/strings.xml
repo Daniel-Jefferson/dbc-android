@@ -33,9 +33,11 @@
     <string name="last_name">Last name</string>
     <string name="full_name">Full name</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_code">Confirm Code</string>
     <string name="forgot_have_an_account">Forgot you have an account…</string>
     <string name="confirm">Confirm</string>
     <string name="alert_message">Please confirm your identity by entering the code sent to your email address</string>
+    <string name="alert_sms_message">We just sent you a SMS to your phone number: %s. Please enter it below to confirm your identity.</string>
     <string name="email_not_verified">Your email is not verified. Enter the code sent to your email address to proceed.</string>
     <string name="corktown">Corktown Collective</string>
     <string name="address">2101 W Lafayette Blvd Suite 106, Detroit, MI 48216</string>

@@ -125,14 +125,6 @@ public class SignUpActivity extends BaseActivity {
             return false;
         }
 
-        if (TextUtils.isEmpty(etEmail.getText())) {
-            DialogUtils.showSnackBar(etEmail, getString(R.string.fill_all_fields),mContext);
-            return false;
-        } else if (!BudsBankUtils.isValidEmail(etEmail.getText().toString())) {
-            DialogUtils.showSnackBar(etEmail, getString(R.string.enter_valid_email),mContext);
-            return false;
-        }
-
         if (TextUtils.isEmpty(etUsername.getText())) {
             DialogUtils.showSnackBar(etUsername, getString(R.string.fill_all_fields),mContext);
             return false;
@@ -235,9 +227,7 @@ public class SignUpActivity extends BaseActivity {
                     LoginResponseModel verifyCodeResponseModel = response.body();
                     if (verifyCodeResponseModel.getStatus() == AppConstants.StatusCodes.SUCCESS.getValue()) {
                         DialogUtils.dismiss();
-                        String emailVerifiedAt = verifyCodeResponseModel.getUser().getEmailVerifiedAt();
-                        if (emailVerifiedAt != null)
-                            isEmailVerified = true;
+                        isPhoneVerified = verifyCodeResponseModel.getUser().getPhoneVerified() == 1;
                         storeData(verifyCodeResponseModel);
                         goToHome();
                     } else {
@@ -267,7 +257,7 @@ public class SignUpActivity extends BaseActivity {
     }
 
     private void goToHome() {
-        if (isEmailVerified) {
+        if (isPhoneVerified) {
             StorageUtillity.saveDataInPreferences(SignUpActivity.this, AppConstants.SharedPreferencesKeys.IS_LOGGED_IN.getValue(), true);
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
@@ -278,7 +268,7 @@ public class SignUpActivity extends BaseActivity {
     }
 
     private void showAlert() {
-        DialogUtils.showVerificationAlert(mContext, getString(R.string.alert_message), new AlertDialogListener() {
+        DialogUtils.showVerificationAlert(mContext, String.format(getString(R.string.alert_sms_message), "+1" + getPhoneNumber()), new AlertDialogListener() {
             @Override
             public void call(String code) {
                 verificationCode = code;
