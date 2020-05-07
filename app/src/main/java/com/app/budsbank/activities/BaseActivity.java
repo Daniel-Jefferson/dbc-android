@@ -47,7 +47,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         GoogleApiClient.OnConnectionFailedListener, LocationListener, Communicator {
 
     protected Context mContext;
-    protected boolean isEmailVerified = false;
+    protected boolean isPhoneVerified = false;
     protected Location location;
     protected LinearLayoutManager linearLayoutManager;
     protected LocationRequest locationRequest;

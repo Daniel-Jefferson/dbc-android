@@ -11,8 +11,8 @@ public class UserModel {
     private String phoneNumber;
     @SerializedName("email")
     private String email;
-    @SerializedName("email_verified_at")
-    private String emailVerifiedAt;
+    @SerializedName("phone_verified")
+    private int phoneVerified;
     @SerializedName("username")
     private String Username;
     @SerializedName("full_name")
@@ -49,12 +49,12 @@ public class UserModel {
         this.email = email;
     }
 
-    public String getEmailVerifiedAt() {
-        return emailVerifiedAt;
+    public int getPhoneVerified() {
+        return phoneVerified;
     }
 
-    public void setEmailVerifiedAt(String emailVerifiedAt) {
-        this.emailVerifiedAt = emailVerifiedAt;
+    public void setPhoneVerified(int phoneVerified) {
+        this.phoneVerified = phoneVerified;
     }
 
     public String getUsername() {

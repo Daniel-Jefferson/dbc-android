@@ -34,11 +34,11 @@
                 android:layout_gravity="center_horizontal"
                 />
             <EditText
-                android:id="@+id/et_email"
-                android:inputType="textEmailAddress"
+                android:id="@+id/et_phone"
+                android:inputType="phone"
                 style="@style/AppTheme.Widget.EditText"
                 android:layout_marginTop="@dimen/_30sdp"
-                android:hint="@string/email"
+                android:hint="@string/phone_number"
                 />
             <EditText
                 android:id="@+id/et_password"

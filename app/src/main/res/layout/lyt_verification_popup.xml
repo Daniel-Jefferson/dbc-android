@@ -43,7 +43,7 @@
                 android:textAllCaps="true"
                 android:inputType="number"
                 android:layout_marginTop="@dimen/_12sdp"
-                android:hint="@string/confirm_password" />
+                android:hint="@string/confirm_code" />
 
             <Button
                 android:id="@+id/btn_confirm"

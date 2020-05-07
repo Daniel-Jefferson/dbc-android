@@ -72,7 +72,7 @@ public class StorageUtillity {
         editor.putString(AppConstants.SharedPreferencesKeys.USER_ID.getValue(), user.getUserId());
         editor.putString(AppConstants.SharedPreferencesKeys.PHONE_NUMBER.getValue(), user.getPhoneNumber());
         editor.putString(AppConstants.SharedPreferencesKeys.EMAIL.getValue(), user.getEmail());
-        editor.putString(AppConstants.SharedPreferencesKeys.EMAIL_VERIFIED_AT.getValue(), user.getEmailVerifiedAt());
+        editor.putInt(AppConstants.SharedPreferencesKeys.PHONE_VERIFIED.getValue(), user.getPhoneVerified());
         editor.putString(AppConstants.SharedPreferencesKeys.USERNAME.getValue(), user.getUsername());
         editor.putString(AppConstants.SharedPreferencesKeys.FULL_NAME.getValue(), user.getFullName());
         editor.putString(AppConstants.SharedPreferencesKeys.PROFILE_IMAGE.getValue(), user.getProfileUrl());
@@ -88,7 +88,7 @@ public class StorageUtillity {
         model.setUserId(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.USER_ID.getValue(), ""));
         model.setPhoneNumber(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.PHONE_NUMBER.getValue(), ""));
         model.setEmail(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.EMAIL.getValue(), ""));
-        model.setEmailVerifiedAt(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.EMAIL_VERIFIED_AT.getValue(), ""));
+        model.setPhoneVerified(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.PHONE_VERIFIED.getValue(), 0));
         model.setUsername(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.USERNAME.getValue(), ""));
         model.setFullName(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.FULL_NAME.getValue(), ""));
         model.setProfileUrl(getDataFromPreferences(context,AppConstants.SharedPreferencesKeys.PROFILE_IMAGE.getValue(), ""));

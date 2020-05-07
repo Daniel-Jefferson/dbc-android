@@ -44,7 +44,7 @@ public class AppConstants {
         USER_ID("user_id"),
         PHONE_NUMBER("phone_number"),
         EMAIL("user_email"),
-        EMAIL_VERIFIED_AT("user_email_verified_at"),
+        PHONE_VERIFIED("user_phone_verified"),
         USERNAME("username"),
         FULL_NAME("user_full_name"),
         PROFILE_IMAGE("user_image"),
