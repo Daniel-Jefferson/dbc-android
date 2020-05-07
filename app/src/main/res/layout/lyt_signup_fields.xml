@@ -15,14 +15,6 @@
         android:hint="@string/phone_number" />
 
     <EditText
-        android:id="@+id/et_email"
-        style="@style/AppTheme.Widget.EditText"
-        android:inputType="textEmailAddress"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:imeOptions="actionNext"
-        android:hint="@string/email" />
-
-    <EditText
         android:id="@+id/et_username"
         style="@style/AppTheme.Widget.EditText"
         android:layout_marginTop="@dimen/_15sdp"

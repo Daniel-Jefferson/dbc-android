@@ -116,6 +116,7 @@ public class ProfileActivity extends BaseActivity {
         String number = phoneNumber.replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
         etPhoneNumber.setText(number);
         etPhoneNumber.setSelection(etPhoneNumber.getText().length());
+        etPhoneNumber.setEnabled(false);
         etFullname.setText(user.getFullName());
         etFullname.setSelection(etFullname.getText().length());
         etUserName.setText(user.getUsername());
