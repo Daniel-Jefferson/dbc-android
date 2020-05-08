@@ -42,8 +42,6 @@ public class SignUpActivity extends BaseActivity {
 
     @BindView(R.id.et_phone_number)
     EditText etPhoneNumber;
-    @BindView(R.id.et_email)
-    EditText etEmail;
     @BindView(R.id.et_username)
     EditText etUsername;
     @BindView(R.id.et_full_name)
@@ -161,7 +159,7 @@ public class SignUpActivity extends BaseActivity {
         if (validateInput()) {
             SignupModel signupModel = populateSignupModel();
             if (!BudsBankUtils.isNetworkAvailable(this)) {
-                DialogUtils.showSnackBar(etEmail, getString(R.string.no_internet_alert), Snackbar.LENGTH_LONG,  mContext);
+                DialogUtils.showSnackBar(etPhoneNumber, getString(R.string.no_internet_alert), Snackbar.LENGTH_LONG,  mContext);
                 DialogUtils.stopLoading();
                 return;
             }
@@ -176,10 +174,10 @@ public class SignUpActivity extends BaseActivity {
                             StorageUtillity.saveDataInPreferences(mContext, AppConstants.SharedPreferencesKeys.SESSION_TOKEN.getValue(), signupResponseModel.getUser().getSessionToken());
                             showAlert();
                         } else {
-                            DialogUtils.showSnackBar(etEmail, signupResponseModel.getMessage(), Snackbar.LENGTH_LONG,mContext);
+                            DialogUtils.showSnackBar(etPhoneNumber, signupResponseModel.getMessage(), Snackbar.LENGTH_LONG,mContext);
                         }
                     } else
-                        DialogUtils.showSnackBar(etEmail, response.body().getMessage(), Snackbar.LENGTH_LONG,mContext);
+                        DialogUtils.showSnackBar(etPhoneNumber, response.body().getMessage(), Snackbar.LENGTH_LONG,mContext);
                 }
 
                 @Override
@@ -195,7 +193,6 @@ public class SignUpActivity extends BaseActivity {
     private SignupModel populateSignupModel() {
         SignupModel model = new SignupModel();
         model.setUsername(etUsername.getText().toString());
-        model.setEmail(etEmail.getText().toString());
         model.setFullName(etFullname.getText().toString());
         String number = getPhoneNumber();
         model.setPhone(number);
