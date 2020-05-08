@@ -164,5 +164,14 @@ public class MainStorageUtils {
             }
             index++;
         }
+
+        index = 0;
+        for (DispensaryModel dModel: featuredDispensariesList) {
+            if (dModel.getId() == dispensaryModel.getId()) {
+                featuredDispensariesList.set(index, dispensaryModel);
+                break;
+            }
+            index++;
+        }
     }
 }
