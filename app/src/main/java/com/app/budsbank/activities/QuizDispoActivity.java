@@ -21,6 +21,7 @@ import com.app.budsbank.models.OpenCloseTimeModel;
 import com.app.budsbank.models.QuizQuestionsModel;
 import com.app.budsbank.models.QuizResponseModel;
 import com.app.budsbank.models.ResponseModel;
+import com.app.budsbank.models.TimeDataModel;
 import com.app.budsbank.models.requestModel.FollowUnFollowRequestModel;
 import com.app.budsbank.utils.AppConstants;
 import com.app.budsbank.utils.BudsBankUtils;
@@ -197,9 +198,7 @@ public class QuizDispoActivity extends BaseActivity {
 
     private boolean isDispensaryOpen(OpenCloseTimeModel openCloseModel) {
         String openDay = openCloseModel.getOpenDay();
-        String openTime = openCloseModel.getOpenTime();
         String closeDay = openCloseModel.getCloseDay();
-        String closeTime = openCloseModel.getCloseTime();
         Calendar calendar = Calendar.getInstance();
 //        calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
 
@@ -208,18 +207,28 @@ public class QuizDispoActivity extends BaseActivity {
         int todayDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
         if (todayDayOfWeek >= openDayOfWeek && todayDayOfWeek <= closeDayOfWeek || openDayOfWeek > closeDayOfWeek) {
-            Calendar now = Calendar.getInstance();
+
+            for (int i = 0; i < openCloseModel.getTimeDataModelArray().size(); i++) {
+                TimeDataModel timeDataModel = openCloseModel.getTimeDataModelArray().get(i);
+                String openTime = timeDataModel.getOpenTime();
+                String closeTime = timeDataModel.getCloseTime();
+                if (timeDataModel.getWeekday() == todayDayOfWeek) {
+                    Calendar now = Calendar.getInstance();
 //            now.setTimeZone(TimeZone.getTimeZone("UTC"));
-            int hour = now.get(Calendar.HOUR_OF_DAY); // Get hour in 24 hour format
-            int minute = now.get(Calendar.MINUTE);
+                    int hour = now.get(Calendar.HOUR_OF_DAY); // Get hour in 24 hour format
+                    int minute = now.get(Calendar.MINUTE);
+                    Date date = parseDate(hour + ":" + minute+":00");
+                    Date dateCompareOne = parseDate(openTime);
+                    Date dateCompareTwo = parseDate(closeTime);
+                    if (dateCompareOne.before( date ) && dateCompareTwo.after(date)) {
+                        return true;
+                    }
+                }
 
-            Date date = parseDate(hour + ":" + minute+":00");
-            Date dateCompareOne = parseDate(openTime);
-            Date dateCompareTwo = parseDate(closeTime);
-
-            if (dateCompareOne.before( date ) && dateCompareTwo.after(date)) {
-                return true;
             }
+
+
+
         }
 
         return false;
