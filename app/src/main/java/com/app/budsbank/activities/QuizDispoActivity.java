@@ -220,7 +220,7 @@ public class QuizDispoActivity extends BaseActivity {
                     Date date = parseDate(hour + ":" + minute+":00");
                     Date dateCompareOne = parseDate(openTime);
                     Date dateCompareTwo = parseDate(closeTime);
-                    if (dateCompareOne.before( date ) && dateCompareTwo.after(date)) {
+                    if (dateCompareOne.after( date ) && dateCompareTwo.before(date)) {
                         return true;
                     }
                 }
