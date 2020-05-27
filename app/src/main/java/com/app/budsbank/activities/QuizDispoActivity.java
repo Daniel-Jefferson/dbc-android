@@ -205,6 +205,7 @@ public class QuizDispoActivity extends BaseActivity {
         int openDayOfWeek = getDayOfWeek(openDay);
         int closeDayOfWeek = getDayOfWeek(closeDay);
         int todayDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        todayDayOfWeek = todayDayOfWeek == 0 ? 6 : todayDayOfWeek - 1;
 
         if (todayDayOfWeek >= openDayOfWeek && todayDayOfWeek <= closeDayOfWeek || openDayOfWeek > closeDayOfWeek) {
 
@@ -217,10 +218,10 @@ public class QuizDispoActivity extends BaseActivity {
 //            now.setTimeZone(TimeZone.getTimeZone("UTC"));
                     int hour = now.get(Calendar.HOUR_OF_DAY); // Get hour in 24 hour format
                     int minute = now.get(Calendar.MINUTE);
-                    Date date = parseDate(hour + ":" + minute+":00");
-                    Date dateCompareOne = parseDate(openTime);
-                    Date dateCompareTwo = parseDate(closeTime);
-                    if (dateCompareOne.after( date ) && dateCompareTwo.before(date)) {
+                    Date date = parseDate(hour + ":" + minute+":00", "hh:mm:ss");
+                    Date dateCompareOne = parseDate(openTime, openTime.length() > 5 ? "hh:mm:ss" : "hh:mm");
+                    Date dateCompareTwo = parseDate(closeTime, closeTime.length() > 5 ? "hh:mm:ss" : "hh:mm");
+                    if (dateCompareOne.before( date ) && dateCompareTwo.after(date)) {
                         return true;
                     }
                 }
@@ -262,9 +263,7 @@ public class QuizDispoActivity extends BaseActivity {
         return new Date();
     }
 
-    private Date parseDate(String date) {
-
-        final String inputFormat = "hh:mm:ss";
+    private Date parseDate(String date, String inputFormat) {
         SimpleDateFormat inputParser = new SimpleDateFormat(inputFormat);
 //        inputParser.setTimeZone(TimeZone.getTimeZone("UTC"));
         try {
