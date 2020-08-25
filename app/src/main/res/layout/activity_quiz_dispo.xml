@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/parent_view"
-    android:background="@color/blue_11"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    android:background="@color/blue_11">
+
     <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
@@ -40,6 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_choose_dispensary">
+
                 <com.github.piasy.fresco.draweeview.shaped.ShapedDraweeView
                     android:id="@+id/iv_dispensary_bg"
                     android:layout_width="match_parent"
@@ -47,14 +48,15 @@
                     android:scaleType="fitXY"
                     app:maskShape="@drawable/ic_rounded_mask"
                     app:placeholder="@drawable/ic_placeholder_black" />
+
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_120sdp"
-                    >
+                    android:layout_height="@dimen/_120sdp">
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/blue11_grad_solid_bg"/>
+                        android:background="@drawable/blue11_grad_solid_bg" />
                 </FrameLayout>
 
                 <TextView
@@ -170,6 +172,65 @@
                             android:layout_below="@+id/iv_timer"
                             android:text="@string/open_now" />
                     </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lyt_products"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@color/blue_11"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/AppTheme.Widget.TextView.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Products"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_18ssp" />
+
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/et_container"-->
+<!--                        style="@style/Alert_EditText"-->
+<!--                        android:layout_height="@dimen/_40sdp"-->
+<!--                        android:background="@drawable/et_trans_bg"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:paddingStart="@dimen/_12sdp"-->
+<!--                        android:paddingEnd="@dimen/_12sdp">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:src="@drawable/icon_search" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/et_search"-->
+<!--                            style="@style/Apptheme.Widget.EditText.Search"-->
+<!--                            android:layout_marginStart="0dp"-->
+<!--                            android:layout_marginEnd="0dp"-->
+<!--                            android:layout_weight=".7"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:hint="@string/search"-->
+<!--                            android:paddingStart="@dimen/_10sdp" />-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/iv_clear"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--                            android:src="@drawable/ic_trans_cross"-->
+<!--                            android:tint="@color/blue_11" />-->
+<!--                    </LinearLayout>-->
+
+                    <ListView
+                        android:id="@+id/lv_product_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_135sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:divider="@color/grey_60"
+                        android:dividerHeight="1dp" />
                 </LinearLayout>
 
                 <TextView

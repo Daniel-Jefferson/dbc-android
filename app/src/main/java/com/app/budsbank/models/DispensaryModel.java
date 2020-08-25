@@ -3,6 +3,7 @@ package com.app.budsbank.models;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class DispensaryModel implements Serializable {
     private int id;
@@ -22,6 +23,8 @@ public class DispensaryModel implements Serializable {
     private OpenCloseTimeModel openCloseTimeModel;
     @SerializedName("is_available")
     private boolean isAvailable;
+    @SerializedName("products")
+    private ArrayList<ProductModel> productModels;
 
     public int getId() {
         return id;
@@ -51,6 +54,8 @@ public class DispensaryModel implements Serializable {
         return profileUrl;
     }
 
+    public ArrayList<ProductModel> getProductModels() { return productModels; }
+
     public void setProfileUrl(String profileUrl) {
         this.profileUrl = profileUrl;
     }
@@ -74,6 +79,8 @@ public class DispensaryModel implements Serializable {
     public void setFollowed(boolean followed) {
         isFollowed = followed;
     }
+
+    public void setProductModels(ArrayList<ProductModel> productModels) { this.productModels = productModels;}
 
     public OpenCloseTimeModel getOpenCloseTimeModel() {
         return openCloseTimeModel;

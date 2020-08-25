@@ -1,23 +1,30 @@
 package com.app.budsbank.activities;
 
-import androidx.annotation.NonNull;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.app.budsbank.R;
+import com.app.budsbank.adapters.ProductAdapter;
 import com.app.budsbank.models.DispensaryModel;
 import com.app.budsbank.models.DispensaryResponseModel;
 import com.app.budsbank.models.OpenCloseTimeModel;
+import com.app.budsbank.models.ProductModel;
 import com.app.budsbank.models.QuizQuestionsModel;
 import com.app.budsbank.models.QuizResponseModel;
 import com.app.budsbank.models.ResponseModel;
@@ -25,19 +32,19 @@ import com.app.budsbank.models.TimeDataModel;
 import com.app.budsbank.models.requestModel.FollowUnFollowRequestModel;
 import com.app.budsbank.utils.AppConstants;
 import com.app.budsbank.utils.BudsBankUtils;
+import com.app.budsbank.utils.CustomViewpager;
 import com.app.budsbank.utils.DialogUtils;
 import com.app.budsbank.utils.StorageUtillity;
 import com.app.budsbank.utils.cacheUtils.MainStorageUtils;
 import com.app.budsbank.web.APIController;
+import com.github.piasy.fresco.draweeview.shaped.ShapedDraweeView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
-import com.github.piasy.fresco.draweeview.shaped.ShapedDraweeView;
-import com.google.android.material.snackbar.Snackbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -78,6 +85,10 @@ public class QuizDispoActivity extends BaseActivity {
     TextView tvCoinsEarned;
     @BindView(R.id.tv_open_close)
     TextView tvOpenClose;
+    @BindView(R.id.lv_product_list)
+    ListView lvProductList;
+    @BindView(R.id.lyt_products)
+    LinearLayout lytProducts;
     private DispensaryModel dispensaryModel;
     private int dispensaryId = 0;
     private String isFrom;
@@ -88,7 +99,7 @@ public class QuizDispoActivity extends BaseActivity {
         setContentView(R.layout.activity_quiz_dispo);
 
         Bundle bundle = getIntent().getExtras();
-        if(bundle  != null) {
+        if (bundle != null) {
             isFrom = bundle.getString(AppConstants.ISFROM);
             dispensaryModel = (DispensaryModel) bundle.getSerializable(AppConstants.IntentKeys.DISPENSARY_MODEL.getValue());
             dispensaryId = bundle.getInt(AppConstants.IntentKeys.DISPENSARY_ID.getValue());
@@ -98,12 +109,36 @@ public class QuizDispoActivity extends BaseActivity {
         initViews();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void initViews() {
-        BudsBankUtils.setViewUnderStatusBar(scrollView,mContext);
-        if(dispensaryModel!=null) {
+
+        lvProductList.setOnTouchListener(new ListView.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        // Disallow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(true);
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        // Allow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+
+                // Handle ListView touch events.
+                v.onTouchEvent(event);
+                return true;
+            }
+        });
+
+        BudsBankUtils.setViewUnderStatusBar(scrollView, mContext);
+        if (dispensaryModel != null) {
             populateUIBasedOnDispensaryModel();
-        } else  {
-            String dispId  = Integer.toString(dispensaryId);
+        } else {
+            String dispId = Integer.toString(dispensaryId);
             fetchDispensaryById(dispId);
         }
         populateUIBasedOnFrom();
@@ -114,19 +149,19 @@ public class QuizDispoActivity extends BaseActivity {
 
     private void fetchDispensaryById(String dispensaryId) {
         String sessionToken = StorageUtillity.getDataFromPreferences(this, AppConstants.SharedPreferencesKeys.SESSION_TOKEN.getValue(), "");
-        String userId       = StorageUtillity.getDataFromPreferences(this, AppConstants.SharedPreferencesKeys.USER_ID.getValue(), "");
+        String userId = StorageUtillity.getDataFromPreferences(this, AppConstants.SharedPreferencesKeys.USER_ID.getValue(), "");
         if (!BudsBankUtils.isNetworkAvailable(this)) {
-            DialogUtils.showSnackBar(btnPlay, getString(R.string.no_internet_alert), Snackbar.LENGTH_LONG,  mContext);
+            DialogUtils.showSnackBar(btnPlay, getString(R.string.no_internet_alert), Snackbar.LENGTH_LONG, mContext);
             DialogUtils.stopLoading();
             return;
         }
         DialogUtils.showLoading(this);
-        APIController.getDispensaryById(sessionToken, dispensaryId,  userId , new Callback<DispensaryResponseModel>() {
+        APIController.getDispensaryById(sessionToken, dispensaryId, userId, new Callback<DispensaryResponseModel>() {
             @Override
             public void onResponse(@NonNull Call<DispensaryResponseModel> call, @NonNull Response<DispensaryResponseModel> response) {
                 DialogUtils.stopLoading();
                 if (!response.isSuccessful()) {
-                    DialogUtils.showSnackBar(parentView, getString(R.string.call_fail_error), QuizDispoActivity.this );
+                    DialogUtils.showSnackBar(parentView, getString(R.string.call_fail_error), QuizDispoActivity.this);
                     return;
                 }
                 DispensaryResponseModel dispensaryResponseModel = response.body();
@@ -160,13 +195,25 @@ public class QuizDispoActivity extends BaseActivity {
         tvCoinsEarned.setText(StorageUtillity.getDataFromPreferences(this, AppConstants.SharedPreferencesKeys.COINS_EARNED.getValue(), "0"));
         String followingText = dispensaryModel.isFollowed() ? getString(R.string.following) : getString(R.string.follow);
         tvFollow.setText(followingText);
-        if(!dispensaryModel.isAvailable()) {
+        if (!dispensaryModel.isAvailable()) {
             btnPlay.setVisibility(View.GONE);
         }
-        if(!dispensaryModel.isFollowed()) {
+        if (!dispensaryModel.isFollowed()) {
             enablePlayButton(false);
         } else {
             tvFollow.setBackgroundResource(R.drawable.following_bg_selecter);
+        }
+
+        if (dispensaryModel.getProductModels().isEmpty()) {
+            lytProducts.setVisibility(View.GONE);
+        } else {
+            ProductAdapter productAdapter = new ProductAdapter(this, dispensaryModel.getProductModels());
+            lvProductList.setAdapter(productAdapter);
+            if (dispensaryModel.getProductModels().size() < 3) {
+                LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) lvProductList.getLayoutParams();
+                lp.height = dpToPx(55, this) * dispensaryModel.getProductModels().size();
+                lvProductList.setLayoutParams(lp);
+            }
         }
         MainStorageUtils mainStorageUtils = MainStorageUtils.getInstance();
         boolean isAvailable = mainStorageUtils.isDispensaryAvailable(dispensaryModel.getId());
@@ -184,8 +231,13 @@ public class QuizDispoActivity extends BaseActivity {
             tvOpenClose.setText(getString(R.string.closed_now));
     }
 
+    public static int dpToPx(float dp, Context context) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
+    }
+
+
     private void enablePlayButton(boolean enable) {
-        if(enable) {
+        if (enable) {
             btnPlay.setEnabled(true);
             btnPlay.setBackgroundResource(R.drawable.alert_btn_selecter);
             btnPlay.setText(R.string.start_quiz);
@@ -218,16 +270,15 @@ public class QuizDispoActivity extends BaseActivity {
 //            now.setTimeZone(TimeZone.getTimeZone("UTC"));
                     int hour = now.get(Calendar.HOUR_OF_DAY); // Get hour in 24 hour format
                     int minute = now.get(Calendar.MINUTE);
-                    Date date = parseDate(hour + ":" + minute+":00", "hh:mm:ss");
+                    Date date = parseDate(hour + ":" + minute + ":00", "hh:mm:ss");
                     Date dateCompareOne = parseDate(openTime, openTime.length() > 5 ? "hh:mm:ss" : "hh:mm");
                     Date dateCompareTwo = parseDate(closeTime, closeTime.length() > 5 ? "hh:mm:ss" : "hh:mm");
-                    if (dateCompareOne.before( date ) && dateCompareTwo.after(date)) {
+                    if (dateCompareOne.before(date) && dateCompareTwo.after(date)) {
                         return true;
                     }
                 }
 
             }
-
 
 
         }
@@ -274,8 +325,8 @@ public class QuizDispoActivity extends BaseActivity {
     }
 
     private void populateUIBasedOnFrom() {
-        if(isFrom != null && !TextUtils.isEmpty(isFrom)) {
-            if(!isFrom.equals(AppConstants.IsFrom.QUIZ_FRAGMENT.getValue())) {
+        if (isFrom != null && !TextUtils.isEmpty(isFrom)) {
+            if (!isFrom.equals(AppConstants.IsFrom.QUIZ_FRAGMENT.getValue())) {
                 layoutDispoContact.setVisibility(View.VISIBLE);
                 btnPiggyBank.setVisibility(View.VISIBLE);
                 tvGoBack.setText(R.string.close);
@@ -331,6 +382,7 @@ public class QuizDispoActivity extends BaseActivity {
             }
         });
     }
+
     private void unFollow() {
         String sessionToken = StorageUtillity.getDataFromPreferences(this, AppConstants.SharedPreferencesKeys.SESSION_TOKEN.getValue(), "");
         String userId = StorageUtillity.getDataFromPreferences(this, AppConstants.SharedPreferencesKeys.USER_ID.getValue(), "");
@@ -369,7 +421,7 @@ public class QuizDispoActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.tv_go_back:
                 finish();
                 break;
@@ -392,7 +444,7 @@ public class QuizDispoActivity extends BaseActivity {
     }
 
     private void actionPiggyBank() {
-        Intent intent  = new Intent(mContext, MainActivity.class);
+        Intent intent = new Intent(mContext, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         intent.putExtra(AppConstants.IntentKeys.FRAGMENT_TO_OPEN.getValue(), 0);
         startActivity(intent);
@@ -401,9 +453,9 @@ public class QuizDispoActivity extends BaseActivity {
 
     private void actionBtnPlay() {
         String sessionToken = StorageUtillity.getDataFromPreferences(this, AppConstants.SharedPreferencesKeys.SESSION_TOKEN.getValue(), "");
-        String userId       = StorageUtillity.getDataFromPreferences(this, AppConstants.SharedPreferencesKeys.USER_ID.getValue(), "");
+        String userId = StorageUtillity.getDataFromPreferences(this, AppConstants.SharedPreferencesKeys.USER_ID.getValue(), "");
         if (!BudsBankUtils.isNetworkAvailable(this)) {
-            DialogUtils.showSnackBar(btnPlay, getString(R.string.no_internet_alert), Snackbar.LENGTH_LONG,  mContext);
+            DialogUtils.showSnackBar(btnPlay, getString(R.string.no_internet_alert), Snackbar.LENGTH_LONG, mContext);
             DialogUtils.stopLoading();
             return;
         }
@@ -413,7 +465,7 @@ public class QuizDispoActivity extends BaseActivity {
             public void onResponse(@NonNull Call<QuizResponseModel> call, @NonNull Response<QuizResponseModel> response) {
                 DialogUtils.dismiss();
                 if (!response.isSuccessful()) {
-                    DialogUtils.showSnackBar(parentView, getString(R.string.call_fail_error), QuizDispoActivity.this );
+                    DialogUtils.showSnackBar(parentView, getString(R.string.call_fail_error), QuizDispoActivity.this);
                     return;
                 }
                 QuizResponseModel quizResponseModel = response.body();
