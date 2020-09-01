@@ -57,6 +57,7 @@ public class DispensaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             mViewHolder.ivHeart.setVisibility(View.GONE);
         }
         mViewHolder.tvName.setText(model.getName());
+        mViewHolder.tvCoins.setText("5");
         mViewHolder.tvAddress.setText(model.getAddress());
         if (isFrom != null && !TextUtils.isEmpty(isFrom)) {
             if (isFrom.equals(AppConstants.IsFrom.DISPENSARY_FRAGMENT.getValue()) || isFrom.equals(AppConstants.IsFrom.SEARCH_ACTIVITY.getValue())
@@ -96,7 +97,7 @@ public class DispensaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvAddress, tvReward, tvRedeem;
+        TextView tvName, tvAddress, tvReward, tvRedeem, tvCoins;
         ImageView ivArrow, ivHeart;
 
 
@@ -107,6 +108,7 @@ public class DispensaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             tvName = itemView.findViewById(R.id.disp_name);
             tvAddress = itemView.findViewById(R.id.disp_address);
             tvRedeem = itemView.findViewById(R.id.tv_redeem);
+            tvCoins = itemView.findViewById(R.id.tv_coins_amount);
             ivArrow = itemView.findViewById(R.id.iv_arrow);
 
         }

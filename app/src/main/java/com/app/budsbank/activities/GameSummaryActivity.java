@@ -42,6 +42,8 @@ public class GameSummaryActivity extends BaseActivity {
     TextView tvDispensaryName;
     @BindView(R.id.disp_address)
     TextView tvDispensaryAddress;
+    @BindView(R.id.tv_coins_amount)
+    TextView tvCoinAmount;
     private VoucherModel voucherModel;
     private int questionAnswered;
     private int remainCount;
@@ -85,7 +87,13 @@ public class GameSummaryActivity extends BaseActivity {
             }
         }
         if (voucherModel == null) {
-            tvCoinsEarned.setText("0");
+            tvCoinsEarned.setText("1");
+            tvCoinAmount.setText("1");
+            String coinStr = StorageUtillity.getDataFromPreferences(this, AppConstants.SharedPreferencesKeys.COINS_EARNED.getValue(), "0");
+            int coin = TextUtils.getIntValue(coinStr);
+            coin += 1;
+            StorageUtillity.saveDataInPreferences(this, AppConstants.SharedPreferencesKeys.COINS_EARNED.getValue(), String.valueOf(coin));
+            BudsBankUtils.broadcastAction(this, AppConstants.Actions.UPDATE_COINS.getValue());
             voucherContainer.setVisibility(View.GONE);
         } else {
             String coinStr = StorageUtillity.getDataFromPreferences(this, AppConstants.SharedPreferencesKeys.COINS_EARNED.getValue(), "0");
@@ -94,6 +102,7 @@ public class GameSummaryActivity extends BaseActivity {
             StorageUtillity.saveDataInPreferences(this, AppConstants.SharedPreferencesKeys.COINS_EARNED.getValue(), String.valueOf(coin));
             BudsBankUtils.broadcastAction(this, AppConstants.Actions.UPDATE_COINS.getValue());
             tvCoinsEarned.setText("5");
+            tvCoinAmount.setText("5");
 
             tvDispensaryName.setText(voucherModel.getDispensaryName());
             tvDispensaryAddress.setText(voucherModel.getDispensaryAddress());

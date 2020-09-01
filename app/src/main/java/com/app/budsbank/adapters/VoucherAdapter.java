@@ -55,6 +55,7 @@ public class VoucherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         });
         VoucherModel model = data.get(position);
         mViewHolder.tvName.setText(model.getDispensaryName());
+        mViewHolder.tvCoins.setText("5");
         mViewHolder.tvAddress.setText(model.getDispensaryAddress());
         if(isFrom!=null && !TextUtils.isEmpty(isFrom)) {
             if(isFrom.equals(AppConstants.IsFrom.DISPENSARY_FRAGMENT.getValue())) {
@@ -87,7 +88,7 @@ public class VoucherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvAddress, tvReward, tvRedeem;
+        TextView tvName, tvAddress, tvReward, tvRedeem, tvCoins;
         ImageView ivArrow, ivHeart;
 
 
@@ -98,6 +99,7 @@ public class VoucherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             tvName = itemView.findViewById(R.id.disp_name);
             tvAddress = itemView.findViewById(R.id.disp_address);
             tvRedeem = itemView.findViewById(R.id.tv_redeem);
+            tvCoins = itemView.findViewById(R.id.tv_coins_amount);
             ivArrow = itemView.findViewById(R.id.iv_arrow);
 
         }
