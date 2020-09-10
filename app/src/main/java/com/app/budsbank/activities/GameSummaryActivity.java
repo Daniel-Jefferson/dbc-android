@@ -42,6 +42,8 @@ public class GameSummaryActivity extends BaseActivity {
     TextView tvDispensaryName;
     @BindView(R.id.disp_address)
     TextView tvDispensaryAddress;
+    @BindView(R.id.tv_coins_amount)
+    TextView tvCoinAmount;
     private VoucherModel voucherModel;
     private int questionAnswered;
     private int remainCount;
@@ -84,20 +86,20 @@ public class GameSummaryActivity extends BaseActivity {
                         .into(ivUserProfileImage);
             }
         }
-        if (voucherModel == null) {
-            tvCoinsEarned.setText("0");
-            voucherContainer.setVisibility(View.GONE);
-        } else {
-            String coinStr = StorageUtillity.getDataFromPreferences(this, AppConstants.SharedPreferencesKeys.COINS_EARNED.getValue(), "0");
-            int coin = TextUtils.getIntValue(coinStr);
-            coin += 5;
-            StorageUtillity.saveDataInPreferences(this, AppConstants.SharedPreferencesKeys.COINS_EARNED.getValue(), String.valueOf(coin));
-            BudsBankUtils.broadcastAction(this, AppConstants.Actions.UPDATE_COINS.getValue());
-            tvCoinsEarned.setText("5");
+        tvCoinsEarned.setText(voucherModel.getReward());
+        tvCoinAmount.setText(voucherModel.getReward());
+        String coinStr = StorageUtillity.getDataFromPreferences(this, AppConstants.SharedPreferencesKeys.COINS_EARNED.getValue(), "0");
+        int coin = TextUtils.getIntValue(coinStr);
+        coin += Integer.parseInt(voucherModel.getReward());
+        StorageUtillity.saveDataInPreferences(this, AppConstants.SharedPreferencesKeys.COINS_EARNED.getValue(), String.valueOf(coin));
+        BudsBankUtils.broadcastAction(this, AppConstants.Actions.UPDATE_COINS.getValue());
 
+        if (Integer.parseInt(voucherModel.getReward()) == 5) {
             tvDispensaryName.setText(voucherModel.getDispensaryName());
             tvDispensaryAddress.setText(voucherModel.getDispensaryAddress());
             voucherContainer.setVisibility(View.VISIBLE);
+        } else {
+            voucherContainer.setVisibility(View.GONE);
         }
 
         MainStorageUtils mainStorageUtils = MainStorageUtils.getInstance();
