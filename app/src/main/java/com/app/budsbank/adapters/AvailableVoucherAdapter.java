@@ -57,6 +57,7 @@ public class AvailableVoucherAdapter extends RecyclerView.Adapter<RecyclerView.V
         VoucherModel model = data.get(position);
         mViewHolder.tvName.setText(model.getDispensaryName());
         mViewHolder.tvAddress.setText(model.getDispensaryAddress());
+        mViewHolder.tvCoinAmount.setText(model.getReward());
         mViewHolder.tvExpiryDate.setText(getExpiryDate(model.getExpiry()));
         mViewHolder.tvClaim.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +107,7 @@ public class AvailableVoucherAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvAddress, tvClaim, tvExpiryDate;
+        TextView tvName, tvAddress, tvClaim, tvExpiryDate, tvCoinAmount;
 
 
         ViewHolder(View itemView) {
@@ -116,6 +117,7 @@ public class AvailableVoucherAdapter extends RecyclerView.Adapter<RecyclerView.V
             tvAddress = itemView.findViewById(R.id.disp_address);
             tvClaim = itemView.findViewById(R.id.tv_claim);
             tvExpiryDate = itemView.findViewById(R.id.tv_expiry_date);
+            tvCoinAmount = itemView.findViewById(R.id.tv_coins_amount);
 
         }
     }

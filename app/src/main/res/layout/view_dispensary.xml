@@ -24,7 +24,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toStartOf="@+id/iv_coin_100_1"
+                android:layout_toStartOf="@+id/lyt_coins"
                 android:orientation="vertical"
                 android:paddingStart="@dimen/_5sdp"
 
@@ -70,12 +70,28 @@
                     android:textSize="@dimen/_11ssp" />
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/iv_coin_100_1"
+            <RelativeLayout
+                android:id="@+id/lyt_coins"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/coin_5_yellow" />
+                android:layout_alignParentEnd="true">
+
+                <ImageView
+                    android:id="@+id/iv_coin_100_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/coin_yellow" />
+
+                <TextView
+                    android:id="@+id/tv_coins_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    style="@style/AppTheme.Widget.TextView.Black"
+                    android:textSize="@dimen/_11sdp"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
         </RelativeLayout>
 
         <RelativeLayout
